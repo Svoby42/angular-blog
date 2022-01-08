@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Category } from './entities/category.model';
 import { Role } from './entities/role.enum';
 import { User } from './entities/user.model';
 import { AuthenticationService } from './services/authentication.service';
+import { CategoryService } from './services/category.service';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +14,18 @@ import { AuthenticationService } from './services/authentication.service';
 export class AppComponent {
   title = 'angular-blog';
 
+  categories: Array<Category> = [];
   currentUser: User = new User;
 
-  constructor(private authenticationService: AuthenticationService, private router: Router){
+  constructor(private authenticationService: AuthenticationService, private categoryService: CategoryService, private router: Router){
     this.authenticationService.currentUser.subscribe(
       data =>{
         this.currentUser = data;
+      }
+    )
+    this.categoryService.getAllCategories().subscribe(
+      data => {
+        this.categories = data;
       }
     )
   }

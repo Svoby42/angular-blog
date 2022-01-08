@@ -18,6 +18,12 @@
             </li>
         </div>
 
+        <div class="navbar-nav me-auto" *ngFor="let category of categories">
+            <li class="nav-item" *ngIf="isAdmin()">
+                <a [routerLink]="['/admin']" routerLinkActive="active" class="nav-link">{{ category.title }}</a>
+            </li>
+        </div>
+
         <div class="navbar-nav ms-auto" *ngIf="!currentUser?.id">
             <li class="nav-item">
                 <a [routerLink]="['/registrace']" routerLinkActive="active" class="nav-link">Zaregistrovat</a>
