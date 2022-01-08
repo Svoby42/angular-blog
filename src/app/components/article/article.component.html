@@ -1,1 +1,9 @@
-<p>article works!</p>
+
+<div class="row text-black mb-2 w-50" *ngFor="let article of articleList" matRipple>
+    
+    <mat-card class="bg-warning">
+        <mat-card-title>{{ article.title }}</mat-card-title>
+        <mat-card-subtitle> {{ article.content }} </mat-card-subtitle>
+    </mat-card>
+    <!-- <p *ngFor="let topic of subject.topicList"> {{ topic.title }} </p>-->
+</div>
