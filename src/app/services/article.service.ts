@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Article } from '../entities/article.model';
 import { AuthenticationService } from './authentication.service';
 import { RequestBaseService } from './request-base.service';
 
@@ -18,6 +19,14 @@ export class ArticleService extends RequestBaseService{
 
   getAllArticles(): Observable<any>{
     return this.http.get(API_URL);
+  }
+
+  saveArticle(article: Article): Observable<any>{
+    return this.http.post(API_URL, article, {headers: this.getHeaders});
+  }
+
+  deleteArticle(article: Article): Observable<any>{
+    return this.http.delete(`${API_URL}/${article.id}`, {headers: this.getHeaders});
   }
 
 }
