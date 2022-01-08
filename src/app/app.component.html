@@ -7,8 +7,8 @@
             <li class="nav-item" *ngIf="isAdmin()">
                 <a [routerLink]="['/admin']" routerLinkActive="active" class="nav-link">Admin</a>
             </li>
-            <li class="nav-item" *ngIf="isAdmin()">
-                <a [routerLink]="['/admin']" routerLinkActive="active" class="nav-link">Editor</a>
+            <li class="nav-item" *ngIf="isEditor()">
+                <a [routerLink]="['/editor']" routerLinkActive="active" class="nav-link">Editor</a>
             </li>
             <li class="nav-item">
                 <a [routerLink]="['/domu']" routerLinkActive="active" class="nav-link">Domů</a>

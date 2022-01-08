@@ -1,0 +1,17 @@
+<button class="btn btn-primary" (click)="createUserRequest()">
+    Vytvořit nového uživatele
+</button>
+<div class="row text-black mb-2 w-50" *ngFor="let user of userList; index as ind" matRipple>
+    <mat-card class="bg-warning">
+        <mat-card-content>
+            ID: <p> {{ user.id }} </p>
+            Uživatelské jméno: <p> {{ user.username }} </p>
+            Jméno: <p> {{ user.name }} </p>
+            Role: <p> {{ user.role }} </p>
+            <button mat-button class="btn bg-warning" (click)="editUser(user)">Upravit</button>
+            <button mat-button class="btn bg-warning" (click)="deleteUser(user, ind)">Smazat</button>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<app-user [user]="selectedUser" (save)="saveUserWatcher($event)" ></app-user>

@@ -9,9 +9,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldControl } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +21,9 @@ import { RegisterComponent } from './guest/register/register.component';
 import { NotFoundComponent } from './error/not-found/not-found.component';
 import { UnauthorizedComponent } from './error/unauthorized/unauthorized.component';
 import { EditorComponent } from './components/editor/editor.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { EditorComponent } from './components/editor/editor.component';
     RegisterComponent,
     NotFoundComponent,
     UnauthorizedComponent,
-    EditorComponent
+    EditorComponent,
+    AdminComponent,
+    ProfileComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +48,7 @@ import { EditorComponent } from './components/editor/editor.component';
     MatSliderModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
