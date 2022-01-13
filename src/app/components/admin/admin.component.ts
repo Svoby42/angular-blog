@@ -14,6 +14,7 @@ export class AdminComponent implements OnInit {
   userList: Array<User> = [];
   selectedUser: User = new User;
   errorMessage: string = "";
+  displayedColumns: string[] = ['id', 'username', 'name', 'role', 'create_time', 'last_login', 'actions']
 
   @ViewChild(UserComponent) child: UserComponent | undefined;
   constructor(private userService: UserService) { }
@@ -26,31 +27,31 @@ export class AdminComponent implements OnInit {
     )
   }
 
-  createUserRequest(){
+  createUserRequest() {
     this.selectedUser = new User();
     this.child?.showUserModal;
   }
 
-  editUser(user: User){
+  editUser(user: User) {
     this.selectedUser = Object.assign({}, user);
     this.child?.showUserModal;
   }
 
-  saveUserWatcher(user: User){
+  saveUserWatcher(user: User) {
     let userIndex = this.userList.findIndex(item => item.id == user.id);
-    if(userIndex !== -1){
+    if (userIndex !== -1) {
       this.userList[userIndex] = user;
     }
-    else{
+    else {
       this.userList.push(user);
     }
   }
 
-  deleteUser(user: User, index: number){
+  deleteUser(user: User, index: number) {
     this.userService.deleteUser(user).subscribe(
       data => {
         this.userList.splice(index, 1);
-      }, err =>{
+      }, err => {
         this.errorMessage = "Neočekávaná chyba";
         console.log(err);
       }
