@@ -5,4 +5,5 @@ export class Article{
     create_time:Date = new Date;
     edit_time: Date | undefined;
     author_name: string = "";
+    category_slug: string = "";
 }

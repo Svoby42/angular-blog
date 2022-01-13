@@ -24,6 +24,7 @@ import { EditorComponent } from './components/editor/editor.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserComponent } from './components/user/user.component';
+import { CategoryComponent } from './components/category/category.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { UserComponent } from './components/user/user.component';
     EditorComponent,
     AdminComponent,
     ProfileComponent,
-    UserComponent
+    UserComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

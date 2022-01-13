@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar navbar-expand navbar-dark bg-dark mb-2">
         <a href="https://angular.io" class="navbar-brand ms-1">
             Nazdar
         </a>
@@ -16,11 +16,9 @@
             <li class="nav-item">
                 <a [routerLink]="['/about']" routerLinkActive="active" class="nav-link">O mně</a>
             </li>
-        </div>
 
-        <div class="navbar-nav me-auto" *ngFor="let category of categories">
-            <li class="nav-item" *ngIf="isAdmin()">
-                <a [routerLink]="['/admin']" routerLinkActive="active" class="nav-link">{{ category.title }}</a>
+            <li class="nav-item" *ngFor="let category of categories">
+                <a [routerLink]="['/', category.slug]" routerLinkActive="active" class="nav-link">{{ category.title }}</a>
             </li>
         </div>
 
@@ -28,9 +26,9 @@
             <li class="nav-item">
                 <a [routerLink]="['/registrace']" routerLinkActive="active" class="nav-link">Zaregistrovat</a>
             </li>
-            <li class="nav-item me-1">
+            <!--<li class="nav-item me-1">
                 <a [routerLink]="['/login']" routerLinkActive="active" class="nav-link">Přihlásit</a>
-            </li>
+            </li>-->
         </div>
 
         <div class="navbar-nav ms-auto" *ngIf="currentUser?.id">
@@ -46,7 +44,8 @@
 
     </div>
 
-    <router-outlet></router-outlet>
-
+    <div class="container-fluid mr-auto mb-2">
+        <router-outlet></router-outlet>
+    </div>
 
 </div>

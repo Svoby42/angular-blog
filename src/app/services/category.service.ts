@@ -17,6 +17,10 @@ export class CategoryService extends RequestBaseService{
     super(authenticationService, http);
   }
 
+  getCategory(slug: String): Observable<any>{
+    return this.http.get(`${API_URL}/${slug}`);
+  }
+
   getAllCategories(): Observable<any>{
     return this.http.get(API_URL);
   }
