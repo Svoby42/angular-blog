@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { Role } from 'src/app/entities/role.enum';
 import { User } from 'src/app/entities/user.model';
 import { UserService } from 'src/app/services/user.service';
-
-declare var $: any;
+import {ErrorStateMatcher} from '@angular/material/core';
 
 @Component({
   selector: 'app-user',
@@ -11,12 +11,13 @@ declare var $: any;
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  matcher = new ErrorStateMatcher();
+  hide = true;
   roles: Array<Role> = [Role.USER, Role.EDITOR];
   errorMessage: string = "";
 
   @Input() user: User = new User;
-  @Output() save = new EventEmitter<any>();
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
@@ -25,17 +26,12 @@ export class UserComponent implements OnInit {
   saveUser(){
     this.userService.saveUser(this.user).subscribe(
       data => {
-        this.save.emit(data);
-        $('#userModal').modal('hide');
+        //this.save.emit(data);
+        //$('#userModal').modal('hide');
       }, err => {
-        this.errorMessage = 'Stala se neočekávaná chyba';
-        console.log(err);
+        //this.errorMessage = 'Stala se neočekávaná chyba';
+        //console.log(err);
       }
     )
   }
-
-  showUserModal(){
-    $('#userModal').modal('show');
-  }
-
 }

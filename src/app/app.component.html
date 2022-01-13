@@ -1,48 +1,15 @@
-<div class="container-fluid">
-    <div class="navbar navbar-expand navbar-dark bg-dark mb-2">
-        <a href="https://angular.io" class="navbar-brand ms-1">
-            Nazdar
-        </a>
-        <div class="navbar-nav me-auto">
-            <li class="nav-item" *ngIf="isAdmin()">
-                <a [routerLink]="['/admin']" routerLinkActive="active" class="nav-link">Admin</a>
-            </li>
-            <li class="nav-item" *ngIf="isEditor()">
-                <a [routerLink]="['/editor']" routerLinkActive="active" class="nav-link">Editor</a>
-            </li>
-            <li class="nav-item">
-                <a [routerLink]="['/domu']" routerLinkActive="active" class="nav-link">Domů</a>
-            </li>
-
-            <li class="nav-item" *ngFor="let category of categories">
-                <a [routerLink]="['/', category.slug]" routerLinkActive="active" class="nav-link">{{ category.title }}</a>
-            </li>
-        </div>
-
-        <div class="navbar-nav ms-auto" *ngIf="!currentUser?.id">
-            <li class="nav-item">
-                <a [routerLink]="['/registrace']" routerLinkActive="active" class="nav-link">Zaregistrovat</a>
-            </li>
-            <!--<li class="nav-item me-1">
-                <a [routerLink]="['/login']" routerLinkActive="active" class="nav-link">Přihlásit</a>
-            </li>-->
-        </div>
-
-        <div class="navbar-nav ms-auto" *ngIf="currentUser?.id">
-            <li class="nav-item">
-                <a [routerLink]="['/profil']" routerLinkActive="active" class="nav-link">
-                    Přihlášen jako: {{ currentUser.username }}
-                </a>
-            </li>
-            <li class="nav-item me-1">
-                <a (click)="logout()" class="nav-link">Odhlásit</a>
-            </li>
-        </div>
-
+<mat-toolbar color="primary">
+    <h1>Nazdar</h1>
+    <a mat-button [routerLink]="['/admin']" routerLinkActive="active" *ngIf="isAdmin()">Adimnisn</a>
+    <a mat-button [routerLink]="['/editor']" routerLinkActive="active" *ngIf="isEditor()">Adimnisn</a>
+    <a mat-button [routerLink]="['/domu']" routerLinkActive="active">Domů</a>
+    <a mat-button [routerLink]="['/', category.slug]" routerLinkActive="active"
+        *ngFor="let category of categories">{{ category.title }}</a>
+    <div class="navbar ms-auto">
+        <a mat-button [routerLink]="['/registrace']" routerLinkActive="active">Zaregistrovat</a>
+        <a mat-button [routerLink]="['/login']" routerLinkActive="active">Login</a>    
     </div>
-
-    <div class="container-fluid mr-auto mb-2">
-        <router-outlet></router-outlet>
-    </div>
-
+</mat-toolbar>
+<div class="container-fluid mr-auto mb-2">
+    <router-outlet></router-outlet>
 </div>

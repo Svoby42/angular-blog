@@ -1,7 +1,3 @@
-<button class="btn btn-primary" (click)="createUserRequest()">
-    Vytvořit nového uživatele
-</button>
-
 <table mat-table [dataSource]="userList" class="mat-elevation-z8">
 
     <ng-container matColumnDef="id">
@@ -47,4 +43,6 @@
 
 </table>
 
-<app-user [user]="selectedUser" (save)="saveUserWatcher($event)"></app-user>
+<button class="btn btn-primary" [routerLink]="['/admin/new']">
+    Vytvořit nového uživatele
+</button>

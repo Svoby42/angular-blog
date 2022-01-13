@@ -27,24 +27,8 @@ export class AdminComponent implements OnInit {
     )
   }
 
-  createUserRequest() {
-    this.selectedUser = new User();
-    this.child?.showUserModal;
-  }
-
-  editUser(user: User) {
-    this.selectedUser = Object.assign({}, user);
-    this.child?.showUserModal;
-  }
-
-  saveUserWatcher(user: User) {
-    let userIndex = this.userList.findIndex(item => item.id == user.id);
-    if (userIndex !== -1) {
-      this.userList[userIndex] = user;
-    }
-    else {
-      this.userList.push(user);
-    }
+  editUser(user: User){
+    
   }
 
   deleteUser(user: User, index: number) {

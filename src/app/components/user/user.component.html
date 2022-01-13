@@ -1,55 +1,14 @@
-<div class="modal" id="userModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-
-            <form #f="ngForm" (ngSubmit)="f.form.valid && saveUser()">
-                <div class="modal-header">
-                    <h5 class="modal-title">Podrobnosti</h5>
-                    <button class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-
-                <div class="modal-body">
-                    <div class="alert alert-danger" *ngIf="errorMessage">
-                        <strong>Chyba! </strong>{{ errorMessage }}
-                    </div>
-
-                    <div class="form-group">
-                        <label for="username">Uživatelské jméno</label>
-                        <input type="text" id="username" name="username" class="form-control" [(ngModel)]="user.username"
-                            #username="ngModel" required />
-                        <div class="alert-danger" *ngIf="f.submitted && !username.valid">
-                            Zadejte uživatelské jméno
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="name">Celé jméno</label>
-                        <input type="text" id="name" name="name" class="form-control" [(ngModel)]="user.name"
-                            #name="ngModel" required />
-                        <div class="alert-danger" *ngIf="f.submitted && !name.valid">
-                            Zadejte jméno
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="role">Role</label>
-                        <input type="text" id="role" name="role" class="form-control" [(ngModel)]="user.role"
-                            #role="ngModel" required />
-                        <mat-label>Vyberte roli</mat-label>
-                        <mat-select>
-                            <mat-option *ngFor="let role of roles">
-                                {{ role }}
-                            </mat-option>
-                        </mat-select>
-                    </div>
-
-                </div>
-
-                <div class="modal-footer">
-                    <button class="btn btn-primary" type="submit">Uložit</button>
-                    <button class="btn btn-danger" data-bs-dismiss="modal">Zavřít</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+<form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+             placeholder="Ex. pat@example.com">
+      <mat-hint>Errors appear instantly!</mat-hint>
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
