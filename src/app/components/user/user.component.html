@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-group">
-            <label for="password">Potvrďte heslo</label>
+            <label for="password">Heslo <small> (8 znaků, 1 číslo, 1 speciální znak)</small></label>
             <input
             type="password"
             id="password"
@@ -46,24 +46,20 @@
             <div class="alert-danger" *ngIf="f.submitted && !password.valid">
                 Zadejte heslo min. 8 znaků dlouhé, musí obsahovat 1 číslo a 1 speciální znak
             </div>
-            <div class="alert-danger" *ngIf="password.errors">
-                
-            </div>
         </div>
 
         <div class="form-group">
-            <label for="confirmPassword">Heslo<small> (8 znaků, 1 číslo, 1 speciální znak)</small></label>
-            <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            class="form-control"
-            [(ngModel)]="confirmedPassword"
-            #confirmedPassword="ngModel"
+            <label for="password">Potvrďte heslo</label>
+            <input type="password" 
+            id="confirmed" 
+            name="confirmed" 
+            class="form-control" 
+            [(ngModel)]="confirmedPassword" 
+            #confirmed="ngModel"
             required
             >
-            <div class="alert-danger" *ngIf="f.submitted && !confirmedPassword.valid && (confirmedPassword !== password)">
-                Zadejte heslo min. 8 znaků dlouhé, musí obsahovat 1 číslo a 1 speciální znak
+            <div class="alert-danger" *ngIf="f.submitted && confirmed.value !== password.value">
+                Hesla nejsou shodná
             </div>
         </div>
 

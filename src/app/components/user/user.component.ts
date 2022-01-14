@@ -4,6 +4,7 @@ import { Role } from 'src/app/entities/role.enum';
 import { User } from 'src/app/entities/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-user',
@@ -16,20 +17,14 @@ export class UserComponent implements OnInit {
   confirmedPassword:string = "";
 
   @Input() user: User = new User;
-  constructor(private userService: UserService) { }
+  constructor(private userService: AuthenticationService) { }
 
   ngOnInit(): void {
   }
 
   saveUser(){
-    this.userService.saveUser(this.user).subscribe(
-      data => {
-        //this.save.emit(data);
-        //$('#userModal').modal('hide');
-      }, err => {
-        //this.errorMessage = 'Stala se neočekávaná chyba';
-        //console.log(err);
-      }
-    )
+    console.log(this.user.password);
+    console.log(this.confirmedPassword);
+    //this.userService.register(this.user);
   }
 }
