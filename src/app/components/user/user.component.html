@@ -40,11 +40,12 @@
             class="form-control"
             [(ngModel)]="user.password"
             #password="ngModel"
-            ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$"
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
             required
             >
-            <div class="alert-danger" *ngIf="f.submitted && !password.valid">
-                Zadejte heslo min. 8 znaků dlouhé, musí obsahovat 1 číslo a 1 speciální znak
+            <div class="alert-danger" *ngIf="f.submitted && !password.valid && password.errors?.['pattern']">
+                Zadejte heslo min. 8 znaků dlouhé s alespoň jedním velkým písmenem a číslem
+                {{ password.errors?.['pattern'].value  }}
             </div>
         </div>
 

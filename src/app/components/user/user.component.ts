@@ -15,12 +15,15 @@ export class UserComponent implements OnInit {
   roles: Array<Role> = [Role.USER, Role.EDITOR];
   errorMessage: string = "";
   confirmedPassword:string = "";
+  invalid: boolean = true;
+  pattern:string = "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$";
 
   @Input() user: User = new User;
   constructor(private userService: AuthenticationService) { }
 
   ngOnInit(): void {
   }
+
 
   saveUser(){
     console.log(this.user.password);
