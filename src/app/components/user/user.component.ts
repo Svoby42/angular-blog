@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Role } from 'src/app/entities/role.enum';
 import { User } from 'src/app/entities/user.model';
 import { UserService } from 'src/app/services/user.service';
-import {ErrorStateMatcher} from '@angular/material/core';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 @Component({
   selector: 'app-user',
@@ -11,11 +11,9 @@ import {ErrorStateMatcher} from '@angular/material/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  matcher = new ErrorStateMatcher();
-  hide = true;
   roles: Array<Role> = [Role.USER, Role.EDITOR];
   errorMessage: string = "";
+  confirmedPassword:string = "";
 
   @Input() user: User = new User;
   constructor(private userService: UserService) { }

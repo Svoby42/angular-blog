@@ -1,5 +1,5 @@
-<div class="container mt-5">
-    <div class="card ms-auto me-auto p-3 shadow-lg custom-card">
+<div class="container mt-5 col-md-3">
+    <div class="ms-auto me-auto p-3 mat-app-background">
         <form #f="ngForm" (ngSubmit)="f.form.valid && login()">
 
             <div class="alert alert-danger" *ngIf="errorMessage">
@@ -33,6 +33,5 @@
         <a [routerLink]="['/registrace']" class="btn btn-link">
             Nemáte účet? - vytvořit nový účet
         </a>
-
     </div>
 </div>
