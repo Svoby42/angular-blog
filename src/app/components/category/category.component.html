@@ -2,10 +2,8 @@
     {{ category.title }}
     <div class="row text-black mb-2 w-50" *ngFor="let article of category.article_list" matRipple>
         <mat-card class="bg-warning">
-            <a>
-                <mat-card-title>{{ article.title }}</mat-card-title>
-            </a>
-            <button mat-button [routerLink]="['/', article.slug]"></button>
+            <mat-card-title>{{ article.title }}</mat-card-title>
+            <button mat-button [routerLink]="['/', category.slug, article.slug]">Zobrazit</button>
         </mat-card>
         <!-- <p *ngFor="let topic of subject.topicList"> {{ topic.title }} </p>-->
     </div>
