@@ -17,13 +17,23 @@ export class UserComponent implements OnInit {
   confirmedPassword:string = "";
   invalid: boolean = true;
   pattern:string = "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$";
+  currentUser: User = new User;
 
   @Input() user: User = new User;
-  constructor(private userService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService, private userService: UserService) {
+    this.authenticationService.currentUser.subscribe(
+      data => {
+        this.currentUser = data;
+      }
+    )
+  }
 
   ngOnInit(): void {
   }
 
+  updateUser(){
+    this.userService.updateUser(this.currentUser);
+  }
 
   saveUser(){
     console.log(this.user.password);

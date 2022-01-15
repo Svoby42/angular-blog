@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   user: User = new User;
   errorMessage: string = "";
   currentUser: User = new User;
+  confirmedPassword: string = "";
 
   constructor(private authenticationService: AuthenticationService, private router: Router) {
     this.authenticationService.currentUser.subscribe(

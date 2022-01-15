@@ -32,6 +32,10 @@ export class UserService extends RequestBaseService{
     return this.http.post(API_URL, user, {headers: this.getHeaders});
   }
 
+  updateUser(user: User): Observable<any>{
+    return this.http.put(`${API_URL}/${user.username}`, user, {headers: this.getHeaders});
+  }
+
   deleteUser(user: User): Observable<any>{
     return this.http.delete(`${API_URL}/${user.username}`, {headers: this.getHeaders});
   }

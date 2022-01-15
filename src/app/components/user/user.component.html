@@ -1,19 +1,9 @@
 <div class="container col-md-3">
     <h2>Uživatel</h2>
-    <form #f="ngForm" (ngSubmit)="f.form.valid && saveUser()">
-        <div class="form-group">
-            <label for="username">Uživatelské jméno</label>
-            <input type="text" 
-            id="username" 
-            name="username" 
-            class="form-control" 
-            [(ngModel)]="user.username" 
-            #username="ngModel" 
-            required>
-            <div class="alert-danger" *ngIf="f.submitted && !username.valid">
-                Zadejte uživatelské jméno
-            </div>
-        </div>
+    <div class="alert alert-danger" *ngIf="errorMessage">
+        {{ errorMessage }}
+    </div>
+    <form #f="ngForm" (ngSubmit)="f.form.valid && updateUser()">
 
         <div class="form-group">
             <label for="name">Jméno</label>
@@ -64,7 +54,6 @@
             </div>
         </div>
 
-        <button class="btn btn-primary" type="submit">Uložit</button>
-
+        <button class="btn btn-primary" type="submit">Uložit změny</button>
     </form>
 </div>
