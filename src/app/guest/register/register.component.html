@@ -57,13 +57,16 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-success w-100 mt-3">
+            <button type="submit" class="btn btn-success w-100 mt-3" *ngIf="!currentUser?.id">
                 Zaregistrovat
+            </button>
+            <button type="submit" class="btn btn-success w-100 mt-3" *ngIf="currentUser?.id">
+                Uložit
             </button>
 
         </form>
 
-        <a [routerLink]="['/login']" class="btn btn-link">
+        <a [routerLink]="['/login']" class="btn btn-link" *ngIf="!currentUser?.id">
             Už máte účet? - přihlašte se se
         </a>
 

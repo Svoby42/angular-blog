@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Role } from 'src/app/entities/role.enum';
 import { User } from 'src/app/entities/user.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -12,11 +13,18 @@ export class RegisterComponent implements OnInit {
 
   user: User = new User;
   errorMessage: string = "";
+  currentUser: User = new User;
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) { }
+  constructor(private authenticationService: AuthenticationService, private router: Router) {
+    this.authenticationService.currentUser.subscribe(
+      data =>{
+        this.currentUser = data;
+      }
+    )
+  }
 
   ngOnInit(): void {
-    if(this.authenticationService.currentUserValue?.id){
+    if(this.currentUser?.id && this.currentUser?.role !== Role.ADMIN){
       this.router.navigate(['/profil']);
     }
   }

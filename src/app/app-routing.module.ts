@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'registrace', component: RegisterComponent },
   { path: 'profil', component: ProfileComponent, canActivate: [AuthGuard], data: { roles: [Role.USER, Role.EDITOR, Role.ADMIN]} },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: [Role.ADMIN] }},
-  { path: 'admin/new', component: UserComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
+  { path: 'admin/new', component: RegisterComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
   { path: ':catslug', component: CategoryComponent },
   { path: '401', component: UnauthorizedComponent },
   { path: '404', component: NotFoundComponent }
