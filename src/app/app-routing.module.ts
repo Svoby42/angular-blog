@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: [Role.ADMIN] }},
   { path: 'admin/new', component: RegisterComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
   { path: ':catslug', component: CategoryComponent },
+  { path: ':articleslug', component: ArticleComponent },
   { path: '401', component: UnauthorizedComponent },
   { path: '404', component: NotFoundComponent }
 

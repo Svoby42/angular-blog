@@ -21,6 +21,10 @@ export class ArticleService extends RequestBaseService{
     return this.http.get(API_URL);
   }
 
+  getArticle(slug: string): Observable<any>{
+    return this.http.get(`${API_URL}/${slug}`);
+  }
+
   saveArticle(article: Article): Observable<any>{
     return this.http.post(API_URL, article, {headers: this.getHeaders});
   }
