@@ -18,6 +18,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -68,7 +69,8 @@ import { NewArticleComponent } from './components/category/new-article/new-artic
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    AngularEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
