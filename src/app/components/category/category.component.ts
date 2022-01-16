@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Article } from 'src/app/entities/article.model';
 import { Category } from 'src/app/entities/category.model';
+import { Role } from 'src/app/entities/role.enum';
+import { User } from 'src/app/entities/user.model';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
@@ -14,9 +17,13 @@ export class CategoryComponent implements OnInit {
   categorySlug: string = "";
   category: Category = new Category;
   articles: Array<Article> = []
+  currentUser: User = new User;
+  admin: Role = Role.ADMIN;
+  editor: Role = Role.EDITOR;
 
-  constructor(private router: Router, private route: ActivatedRoute, private categoryService: CategoryService) {
-      this.router.events.subscribe( (val) => {                      //we have many categories - ngOnInit happens only once, we need to somehow find out if the slug was replaced, it can be done this way
+  constructor(private router: Router, private route: ActivatedRoute, 
+    private categoryService: CategoryService, private authenticationService: AuthenticationService) {
+      this.router.events.subscribe( (val) => {
         if(val instanceof NavigationEnd){
           this.route.params.subscribe(params => {
             this.categorySlug = params['catslug'];
@@ -28,6 +35,11 @@ export class CategoryComponent implements OnInit {
           );
         }
       });
+      this.authenticationService.currentUser.subscribe(
+        data => {
+          this.currentUser = data;
+        }
+      )
   }
 
   ngOnInit(): void {
@@ -39,6 +51,11 @@ export class CategoryComponent implements OnInit {
         this.category = data;
       }
     );
+    this.authenticationService.currentUser
+  }
+
+  canCreate(): boolean{
+    return this.currentUser?.role === Role.ADMIN || this.currentUser?.role === Role.EDITOR;
   }
 
 }

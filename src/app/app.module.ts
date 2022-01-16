@@ -30,6 +30,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserComponent } from './components/user/user.component';
 import { CategoryComponent } from './components/category/category.component';
+import { NewArticleComponent } from './components/category/new-article/new-article.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CategoryComponent } from './components/category/category.component';
     AdminComponent,
     ProfileComponent,
     UserComponent,
-    CategoryComponent
+    CategoryComponent,
+    NewArticleComponent,
   ],
   imports: [
     BrowserModule,
