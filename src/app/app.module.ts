@@ -15,6 +15,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
@@ -63,6 +64,7 @@ import { NewArticleComponent } from './components/category/new-article/new-artic
     MatDialogModule,
     MatIconModule,
     MatToolbarModule,
+    MatTooltipModule,
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
