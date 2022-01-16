@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Article } from 'src/app/entities/article.model';
+import { Category } from 'src/app/entities/category.model';
+import { User } from 'src/app/entities/user.model';
+import { ArticleService } from 'src/app/services/article.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-new-article',
@@ -9,10 +15,44 @@ import { Article } from 'src/app/entities/article.model';
 export class NewArticleComponent implements OnInit {
 
   article: Article = new Article;
+  currentUser: User = new User;
+  categoryList: Array<Category> = [];
+  categorySlug: string = "";
 
-  constructor() { }
+  constructor(private articleService: ArticleService, private categoryService: CategoryService,
+    private router: Router, private authenticationService: AuthenticationService, 
+    private route: ActivatedRoute) { 
+      this.router.events.subscribe( (val) => {
+        if(val instanceof NavigationEnd){
+          this.route.params.subscribe(params => {
+            this.categorySlug = params['catslug'];
+          });
+        }
+      });
+      this.authenticationService.currentUser.subscribe(
+        data =>{
+          this.currentUser = data;
+        }
+      )
+      this.categoryService.getAllCategories().subscribe(
+        data => {
+          this.categoryList = data;
+          this.categoryList.forEach((category, index) => {
+            if(category.slug === this.categorySlug){
+              this.categoryList.splice(index, 1);
+            }
+          })
+        }
+      )
+  }
 
   ngOnInit(): void {
+    
+  }
+
+  save(){
+    this.articleService.saveArticle(this.article);
+    this.router.navigate(['/', this.article.category_slug]);
   }
 
 }

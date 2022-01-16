@@ -1,6 +1,6 @@
 <div class="container col-md-8">
     <h2>Nový článek</h2>
-    <form #f="ngForm" (ngSubmit)="f.valid">
+    <form #f="ngForm" (ngSubmit)="f.valid && save()">
         <div class="form-group">
             <label for="title">Titulek</label>
             <input type="text" 
@@ -12,10 +12,19 @@
             required>
         </div>
 
+        <div class="form-group">
+            <label for="category_slug">Vyberte kategorii <small>Podle slugu</small></label>
+            <select class="form-select">
+                <option selected> {{ categorySlug }} </option>
+                <option *ngFor="let category of categoryList">
+                        {{ category.slug }}
+                </option>
+            </select>
+        </div>
 
         <div class="form-group">
             <label for="slug">Zadejte slug
-                <span matTooltip='Identifikátor čláknu v URL, například pokud je titulek "běžel pes přes oves", tak slug bude bezel-pes-pres-oves' [matTooltipPosition]="'right'">
+                <span matTooltip='Identifikátor článku v URL, například pokud je titulek "běžel pes přes oves", tak slug bude bezel-pes-pres-oves' [matTooltipPosition]="'right'">
                     <svg data-toggle="tooltip" title="pokus" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-question-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
