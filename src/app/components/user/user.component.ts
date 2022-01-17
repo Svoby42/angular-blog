@@ -3,6 +3,7 @@ import { Role } from 'src/app/entities/role.enum';
 import { User } from 'src/app/entities/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -18,7 +19,7 @@ export class UserComponent implements OnInit {
   currentUser: User = new User;
   userEdit: User = new User;
 
-  constructor(private authenticationService: AuthenticationService, private userService: UserService) {
+  constructor(private authenticationService: AuthenticationService, private userService: UserService, private router: Router) {
     this.authenticationService.currentUser.subscribe(
       data => {
         this.currentUser = data;
@@ -27,7 +28,6 @@ export class UserComponent implements OnInit {
     this.userService.getEditedUser().subscribe(
       data => {
         this.userEdit = data;
-        console.log(this.userEdit.username);
       }
     )
   }
@@ -42,7 +42,11 @@ export class UserComponent implements OnInit {
   }
 
   updateUser(){
-    //this.userService.updateUser(this.currentUser);
+    this.userService.updateUser(this.userEdit).subscribe(
+      data => {
+        this.router.navigate(['/admin']);
+      }
+    );
   }
 
   saveUser(){

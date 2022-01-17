@@ -29,7 +29,6 @@
             [(ngModel)]="userEdit.name"
             #name="ngModel"
             required
-            value={{userEdit.name}}
             >
             <div class="alert-danger" *ngIf="f.submitted && !name.valid">
                 Zadejte jméno
@@ -50,7 +49,6 @@
             >
             <div class="alert-danger" *ngIf="f.submitted && !password.valid && password.errors?.['pattern']">
                 Zadejte heslo min. 8 znaků dlouhé s alespoň jedním velkým písmenem a číslem bez speciálních znaků
-                {{ password.errors?.['pattern'].value  }}
             </div>
         </div>
 
