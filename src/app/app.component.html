@@ -3,8 +3,12 @@
     <a mat-button [routerLink]="['/admin']" routerLinkActive="active" *ngIf="isAdmin()">Dashboard</a>
     <a mat-button [routerLink]="['/editor']" routerLinkActive="active" *ngIf="isEditor()">Dashboard</a>
     <a mat-button [routerLink]="['/domu']" routerLinkActive="active">Domů</a>
-    <a mat-button [routerLink]="['/', category.slug]" routerLinkActive="active" *ngFor="let category of categories">{{
-        category.title }}</a>
+    <a mat-button [routerLink]="['/', category.slug]" routerLinkActive="active" 
+    *ngFor="let category of categories">
+        <span [matTooltip]="'' + category.description" [matTooltipPosition]="'below'">
+            {{ category.title }}
+        </span>
+    </a>
     <div class="navbar ms-auto" *ngIf="!currentUser?.id">
         <a mat-button [routerLink]="['/registrace']" routerLinkActive="active">Zaregistrovat</a>
         <a mat-button [routerLink]="['/login']" routerLinkActive="active">Login</a>

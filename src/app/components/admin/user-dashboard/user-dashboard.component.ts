@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -6,12 +6,13 @@ import { User } from 'src/app/entities/user.model';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  selector: 'app-user-dashboard',
+  templateUrl: './user-dashboard.component.html',
+  styleUrls: ['./user-dashboard.component.css']
 })
-export class AdminComponent implements OnInit {
+export class UserDashboardComponent implements OnInit {
 
+  
   userList: Array<User> = [];
   selectedUser: User = new User;
   errorMessage: string = "";
