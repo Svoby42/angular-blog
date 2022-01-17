@@ -35,7 +35,7 @@
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef> Akce </th>
             <td mat-cell *matCellDef="let user">
-                <button mat-button [routerLink]="['/admin/new']" routerLinkActive="active" (click)="editUser(user)">Upravit</button>
+                <button mat-button [routerLink]="['/admin/edit']" routerLinkActive="active" (click)="editUser(user)">Upravit</button>
                 <button mat-button (click)="deleteUser(user, userList.indexOf(user))">Smazat</button>
             </td>
         </ng-container>

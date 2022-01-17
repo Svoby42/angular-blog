@@ -18,6 +18,7 @@ export class CategoryComponent implements OnInit {
   category: Category = new Category;
   articles: Array<Article> = []
   currentUser: User = new User;
+  errorMessage: string = "";
   admin: Role = Role.ADMIN;
   editor: Role = Role.EDITOR;
 
@@ -49,6 +50,10 @@ export class CategoryComponent implements OnInit {
     this.categoryService.getCategory(this.categorySlug).subscribe(
       data =>{
         this.category = data;
+      }, err =>{
+        if(err?.status == 404){
+          this.router.navigate(['/404']);
+        }
       }
     );
     this.authenticationService.currentUser

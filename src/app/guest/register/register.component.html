@@ -35,7 +35,7 @@
         </div>
 
         <div class="form-group">
-            <label for="password">Heslo <small> (8 znaků, 1 číslo, 1 speciální znak)</small></label>
+            <label for="password">Heslo <small> (8 znaků, 1 číslo, 1 velké písmeno)</small></label>
             <input
             type="password"
             id="password"
@@ -47,7 +47,7 @@
             required
             >
             <div class="alert-danger" *ngIf="f.submitted && !password.valid && password.errors?.['pattern']">
-                Zadejte heslo min. 8 znaků dlouhé s alespoň jedním velkým písmenem a číslem
+                Zadejte heslo min. 8 znaků dlouhé s alespoň jedním velkým písmenem a číslem bez speciálních znaků
                 {{ password.errors?.['pattern'].value  }}
             </div>
         </div>

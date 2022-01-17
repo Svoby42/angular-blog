@@ -18,27 +18,27 @@ export class RegisterComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticationService, private router: Router) {
     this.authenticationService.currentUser.subscribe(
-      data =>{
+      data => {
         this.currentUser = data;
       }
     )
   }
 
   ngOnInit(): void {
-    if(this.currentUser?.id && this.currentUser?.role !== Role.ADMIN){
+    if (this.currentUser?.id && this.currentUser?.role !== Role.ADMIN) {
       this.router.navigate(['/profil']);
     }
   }
 
-  register(){
+  register() {
     this.authenticationService.register(this.user).subscribe(
       data => {
         this.router.navigate(['/login']);
       }, err => {
-        if(err?.status == 409){
-          this.errorMessage = 'Jméno již existuje';
-        }else{
-          this.errorMessage = 'Chyba ' +  err.errorMessage;
+        if (err?.status == 409) {
+          this.errorMessage = 'Uživatelské jméno již existuje';
+        } else {
+          this.errorMessage = 'Chyba ' + err.errorMessage;
           console.log(err);
         }
       })

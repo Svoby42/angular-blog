@@ -21,11 +21,12 @@ const routes: Routes = [
   { path: 'profil', component: ProfileComponent, canActivate: [AuthGuard], data: { roles: [Role.USER, Role.EDITOR, Role.ADMIN]} },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: [Role.ADMIN] }},
   { path: 'admin/new', component: RegisterComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
+  { path: 'admin/edit', component: UserComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
+  { path: '401', component: UnauthorizedComponent },
+  { path: '404', component: NotFoundComponent },
   { path: ':catslug', component: CategoryComponent },
   { path: ':catslug/new', component: NewArticleComponent, pathMatch: 'full' },
-  { path: ':catslug/:articleslug', component: ArticleComponent, pathMatch: 'full' },
-  { path: '401', component: UnauthorizedComponent },
-  { path: '404', component: NotFoundComponent }
+  { path: ':catslug/:articleslug', component: ArticleComponent, pathMatch: 'full' }
 
 ];
 

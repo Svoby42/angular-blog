@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
+  date: Date = new Date();
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(Date.now())
   }
 
 }

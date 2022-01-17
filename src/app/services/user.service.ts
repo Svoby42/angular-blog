@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Article } from '../entities/article.model';
 import { User } from '../entities/user.model';
@@ -14,10 +14,19 @@ const API_URL = `${environment.BASE_URL}/api/users`;
 })
 export class UserService extends RequestBaseService{
 
-  user: User = new User;
+  public user: User = new User;
+  public editedUser: Observable<User>;
+  public editedUserSubject: BehaviorSubject<User>;
 
   constructor(authenticationService: AuthenticationService, http: HttpClient) {
     super(authenticationService, http);
+
+    this.editedUserSubject = new BehaviorSubject<User>(this.user);
+    this.editedUser = this.editedUserSubject.asObservable();
+  }
+
+  getEditedUser(): Observable<any>{
+    return this.editedUser;
   }
 
   getAllUsers(): Observable<any>{
