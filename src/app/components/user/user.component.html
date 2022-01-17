@@ -1,9 +1,23 @@
-<div class="container col-md-3">
-    <h2>Uživatel</h2>
+<div class="container mt-5 col-md-3">
+    <h2>Uživatel {{ userEdit.username }}</h2>
     <div class="alert alert-danger" *ngIf="errorMessage">
         {{ errorMessage }}
     </div>
     <form #f="ngForm" (ngSubmit)="f.form.valid && updateUser()">
+        <div class="form-group">
+            <label for="username">Uživatelské jméno</label>
+            <input type="text" 
+            id="username" 
+            name="username" 
+            class="form-control" 
+            [(ngModel)]="userEdit.username" 
+            #username="ngModel" 
+            required
+            value={{userEdit.username}}>
+            <div class="alert-danger" *ngIf="f.submitted && !username.valid">
+                Zadejte uživatelské jméno
+            </div>
+        </div>
 
         <div class="form-group">
             <label for="name">Jméno</label>
@@ -12,9 +26,10 @@
             id="name"
             name="name"
             class="form-control"
-            [(ngModel)]="user.name"
+            [(ngModel)]="userEdit.name"
             #name="ngModel"
             required
+            value={{userEdit.name}}
             >
             <div class="alert-danger" *ngIf="f.submitted && !name.valid">
                 Zadejte jméno
@@ -22,38 +37,25 @@
         </div>
 
         <div class="form-group">
-            <label for="password">Heslo <small> (8 znaků, 1 číslo, 1 speciální znak)</small></label>
+            <label for="password">Heslo <small> (8 znaků, 1 číslo, 1 velké písmeno)</small></label>
             <input
             type="password"
             id="password"
             name="password"
             class="form-control"
-            [(ngModel)]="user.password"
+            [(ngModel)]="userEdit.password"
             #password="ngModel"
             pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
             required
             >
             <div class="alert-danger" *ngIf="f.submitted && !password.valid && password.errors?.['pattern']">
-                Zadejte heslo min. 8 znaků dlouhé s alespoň jedním velkým písmenem a číslem
+                Zadejte heslo min. 8 znaků dlouhé s alespoň jedním velkým písmenem a číslem bez speciálních znaků
                 {{ password.errors?.['pattern'].value  }}
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="password">Potvrďte heslo</label>
-            <input type="password" 
-            id="confirmed" 
-            name="confirmed" 
-            class="form-control" 
-            [(ngModel)]="confirmedPassword" 
-            #confirmed="ngModel"
-            required
-            >
-            <div class="alert-danger" *ngIf="f.submitted && confirmed.value !== password.value">
-                Hesla nejsou shodná
-            </div>
-        </div>
-
-        <button class="btn btn-primary" type="submit">Uložit změny</button>
+        <button class="btn btn-success w-100 mt-3" type="submit">
+            Uložit změny
+        </button>
     </form>
 </div>
