@@ -29,16 +29,11 @@ export class NewArticleComponent implements OnInit {
           });
         }
       });
-      this.authenticationService.currentUser.subscribe(
-        data =>{
-          this.currentUser = data;
-        }
-      )
       this.categoryService.getAllCategories().subscribe(
         data => {
           this.categoryList = data;
           this.categoryList.forEach((category, index) => {
-            if(category.slug === this.categorySlug){
+            if(category.slug === this.categorySlug || this.article?.category_slug === category.slug){
               this.categoryList.splice(index, 1);
             }
           })
@@ -47,12 +42,40 @@ export class NewArticleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this.editingArticle();
+    this.authenticationService.currentUser.subscribe(
+      data =>{
+        this.currentUser = data;
+      }
+    )
+  }
+
+  editingArticle(){
+    console.log('pokus');
+    if(this.router.url === '/admin/article/edit'){
+      this.articleService.getEditedArticle().subscribe(
+        data => {
+          this.article = data;
+        }
+      )
+    }
+  }
+
+  updateArticle(){
+    this.articleService.updateArticle(this.article).subscribe(
+      data => {
+        this.router.navigate(['/admin']);
+      }
+    )
   }
 
   save(){
-    this.articleService.saveArticle(this.article);
-    this.router.navigate(['/', this.article.category_slug]);
+    this.articleService.saveArticle(this.article).subscribe(
+      data => {
+        this.router.navigate(['/', this.article.category_slug]);
+        console.log(this.article.category_slug);
+      }
+    );
   }
 
 }

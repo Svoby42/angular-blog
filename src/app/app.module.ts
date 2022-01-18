@@ -32,7 +32,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserComponent } from './components/user/user.component';
 import { CategoryComponent } from './components/category/category.component';
-import { NewArticleComponent } from './components/category/new-article/new-article.component';
+import { NewArticleComponent } from './components/article/new-article/new-article.component';
 import { UserDashboardComponent } from './components/admin/user-dashboard/user-dashboard.component';
 import { ArticleDashboardComponent } from './components/admin/article-dashboard/article-dashboard.component';
 import { CategoryDashboardComponent } from './components/admin/category-dashboard/category-dashboard.component';

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
 import { ArticleComponent } from './components/article/article.component';
 import { CategoryComponent } from './components/category/category.component';
-import { NewArticleComponent } from './components/category/new-article/new-article.component';
+import { NewArticleComponent } from './components/article/new-article/new-article.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserComponent } from './components/user/user.component';
 import { Role } from './entities/role.enum';
@@ -22,6 +22,8 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: [Role.ADMIN] }},
   { path: 'admin/user/new', component: RegisterComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
   { path: 'admin/user/edit', component: UserComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
+  { path: 'admin/article/new', component: NewArticleComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
+  { path: 'admin/article/edit', component: NewArticleComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
   { path: '401', component: UnauthorizedComponent },
   { path: '404', component: NotFoundComponent },
   { path: ':catslug', component: CategoryComponent },

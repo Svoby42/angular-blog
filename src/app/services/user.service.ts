@@ -42,7 +42,6 @@ export class UserService extends RequestBaseService{
   }
 
   updateUser(user: User): Observable<any>{
-    console.log(`${API_URL}/${user.username}`);
     return this.http.put(`${API_URL}/${user.username}`, user, {headers: this.getHeaders});
   }
 

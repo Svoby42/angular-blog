@@ -8,18 +8,41 @@
             name="title"
             class="form-control"
             [(ngModel)]="article.title"
-            #slug="ngModel"
+            #title="ngModel"
             required>
+        </div>
+        <div class="alert-danger" *ngIf="f.submitted && !title.valid">
+            Zadejte titulek
         </div>
 
         <div class="form-group">
             <label for="category_slug">Vyberte kategorii <small>Podle slugu</small></label>
-            <select class="form-select">
+
+            <select class="form-select"
+            *ngIf="!article.id"
+            id="category_slug"
+            name="category_slug"
+            [(ngModel)]="article.category_slug"
+            #category_slug="ngModel"
+            required>
                 <option selected> {{ categorySlug }} </option>
                 <option *ngFor="let category of categoryList">
                         {{ category.slug }}
                 </option>
             </select>
+
+            <select class="form-select" 
+            *ngIf="article.id"
+            id="category_slug"
+            name="category_slug"
+            [(ngModel)]="article.category_slug"
+            #category_slug="ngModel">
+                <option selected *ngIf="article"> {{ article?.category_slug }} </option>
+                <option *ngFor="let category of categoryList">
+                        {{ category.slug }}
+                </option>
+            </select>
+
         </div>
 
         <div class="form-group">
@@ -41,7 +64,7 @@
             #slug="ngModel"
             pattern="^[a-z0-9]+(?:-[a-z0-9]+)*$" 
             required />
-            <div class="alert-danger" *ngIf="f.submitted && !slug.valid && slug.errors?.['pattern']">
+            <div class="alert-danger" *ngIf="f.submitted && (!slug.valid || slug.errors?.['pattern'])">
                 Špatný formát
             </div>
         </div>
@@ -59,7 +82,7 @@
             </angular-editor>
 
             <div class="alert-danger" *ngIf="f.submitted && !content.valid">
-
+                Článek musí mít obsah
             </div>
         </div>
         <button class="btn btn-success w-100 mt-3" type="submit">

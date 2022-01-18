@@ -24,6 +24,10 @@ export class ArticleService extends RequestBaseService{
     this.editedArticle = this.editedArticleSubject.asObservable();
   }
 
+  getEditedArticle(): Observable<any>{
+    return this.editedArticle;
+  }
+
   getAllArticles(): Observable<any>{
     return this.http.get(API_URL);
   }
@@ -34,6 +38,10 @@ export class ArticleService extends RequestBaseService{
 
   saveArticle(article: Article): Observable<any>{
     return this.http.post(API_URL, article, {headers: this.getHeaders});
+  }
+
+  updateArticle(article: Article): Observable<any>{
+    return this.http.put(`${API_URL}/${article.slug}`, article, {headers: this.getHeaders});
   }
 
   deleteArticle(article: Article): Observable<any>{
