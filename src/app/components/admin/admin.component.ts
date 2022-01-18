@@ -12,15 +12,13 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AdminComponent implements OnInit {
 
-  userList: Array<User> = [];
-  selectedUser: User = new User;
-  errorMessage: string = "";
-  displayedColumns: string[] = ['id', 'username', 'name', 'role', 'create_time', 'last_login', 'actions'];
-  dataSource = new MatTableDataSource<User>();
   userTableVisible = false;
   userButtonText: string = "";
+  articleTableVisible = false;
+  articleButtonText: string = "";
+  categoryTableVisible = false;
+  categoryButtonText: string = "";
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private userService: UserService, private router: Router) {
 
   }
@@ -30,7 +28,7 @@ export class AdminComponent implements OnInit {
     this.userTableVisible = false;
   }
 
-  toggleDisplay(){
+  toggleUserTableDisplay(){
     this.userTableVisible = !this.userTableVisible;
     if(this.userTableVisible){
       this.userButtonText = "Skrýt";

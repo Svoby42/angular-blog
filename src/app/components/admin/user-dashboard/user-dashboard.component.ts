@@ -12,8 +12,6 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserDashboardComponent implements OnInit {
 
-
-  userList: Array<User> = [];
   selectedUser: User = new User;
   errorMessage: string = "";
   displayedColumns: string[] = ['id', 'username', 'name', 'role', 'create_time', 'last_login', 'actions'];
@@ -36,13 +34,14 @@ export class UserDashboardComponent implements OnInit {
 
   editUser(user: User) {
     this.userService.editedUserSubject.next(user);
+    this.router.navigate(['/admin/user/edit']);
   }
 
   deleteUser(user: User, index: number) {
     if (confirm("Potvrzeni: bude smazán uživatel " + user.username)) {
       this.userService.deleteUser(user).subscribe(
         data => {
-          this.userList.splice(index, 1);
+          this.dataSource.data.splice(index, 1);
         }, err => {
           this.errorMessage = "Neočekávaná chyba";
           console.log(err);

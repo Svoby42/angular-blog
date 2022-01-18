@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Article } from '../entities/article.model';
 import { AuthenticationService } from './authentication.service';
@@ -13,8 +13,15 @@ const API_URL = `${environment.BASE_URL}/api/articles`;
 })
 export class ArticleService extends RequestBaseService{
 
+  public article: Article = new Article;
+  public editedArticle: Observable<Article>;
+  public editedArticleSubject: BehaviorSubject<Article>;
+
   constructor(authenticationService: AuthenticationService, http: HttpClient) {
     super(authenticationService, http);
+
+    this.editedArticleSubject = new BehaviorSubject<Article>(this.article);
+    this.editedArticle = this.editedArticleSubject.asObservable();
   }
 
   getAllArticles(): Observable<any>{
