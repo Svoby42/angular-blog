@@ -12,12 +12,13 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserDashboardComponent implements OnInit {
 
-  
+
   userList: Array<User> = [];
   selectedUser: User = new User;
   errorMessage: string = "";
   displayedColumns: string[] = ['id', 'username', 'name', 'role', 'create_time', 'last_login', 'actions'];
   dataSource = new MatTableDataSource<User>()
+  visible = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private userService: UserService, private router: Router) {
@@ -33,12 +34,12 @@ export class UserDashboardComponent implements OnInit {
     );
   }
 
-  editUser(user: User){
+  editUser(user: User) {
     this.userService.editedUserSubject.next(user);
   }
 
   deleteUser(user: User, index: number) {
-    if(confirm("Potvrzeni: bude smazán uživatel " + user.username)){
+    if (confirm("Potvrzeni: bude smazán uživatel " + user.username)) {
       this.userService.deleteUser(user).subscribe(
         data => {
           this.userList.splice(index, 1);
@@ -53,9 +54,9 @@ export class UserDashboardComponent implements OnInit {
 
   reloadComponent() {
     let currentUrl = this.router.url;
-        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-        this.router.onSameUrlNavigation = 'reload';
-        this.router.navigate([currentUrl]);
-    }
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+  }
 
 }

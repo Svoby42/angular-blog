@@ -16,7 +16,9 @@ export class AdminComponent implements OnInit {
   selectedUser: User = new User;
   errorMessage: string = "";
   displayedColumns: string[] = ['id', 'username', 'name', 'role', 'create_time', 'last_login', 'actions'];
-  dataSource = new MatTableDataSource<User>()
+  dataSource = new MatTableDataSource<User>();
+  userTableVisible = false;
+  userButtonText: string = "";
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private userService: UserService, private router: Router) {
@@ -24,37 +26,17 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getAllUsers().subscribe(
-      data => {
-        this.dataSource = new MatTableDataSource(data);
-        this.dataSource.paginator = this.paginator;
-      }
-    );
+    this.userButtonText = "Zobrazit";
+    this.userTableVisible = false;
   }
 
-  editUser(user: User){
-    this.userService.editedUserSubject.next(user);
-  }
-
-  deleteUser(user: User, index: number) {
-    if(confirm("Potvrzeni: bude smazán uživatel " + user.username)){
-      this.userService.deleteUser(user).subscribe(
-        data => {
-          this.userList.splice(index, 1);
-        }, err => {
-          this.errorMessage = "Neočekávaná chyba";
-          console.log(err);
-        }
-      );
-      this.reloadComponent();
+  toggleDisplay(){
+    this.userTableVisible = !this.userTableVisible;
+    if(this.userTableVisible){
+      this.userButtonText = "Skrýt";
+    }else{
+      this.userButtonText = "Zobrazit";
     }
   }
-
-  reloadComponent() {
-    let currentUrl = this.router.url;
-        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-        this.router.onSameUrlNavigation = 'reload';
-        this.router.navigate([currentUrl]);
-    }
 
 }
