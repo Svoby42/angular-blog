@@ -12,29 +12,46 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AdminComponent implements OnInit {
 
-  userTableVisible = false;
-  userButtonText: string = "";
-  articleTableVisible = false;
-  articleButtonText: string = "";
-  categoryTableVisible = false;
-  categoryButtonText: string = "";
+  arrayValues = new Map<String, [String, Boolean]>();
+  arrayTables = ["userTable", "articleTable", "categoryTable"]
 
   constructor(private userService: UserService, private router: Router) {
 
   }
 
   ngOnInit(): void {
-    this.userButtonText = "Zobrazit";
-    this.userTableVisible = false;
+    this.arrayTables.forEach(element => {
+      this.arrayValues.set(element, ["Zobrazit", false]);
+    });
   }
 
-  toggleUserTableDisplay(){
-    this.userTableVisible = !this.userTableVisible;
-    if(this.userTableVisible){
-      this.userButtonText = "Skrýt";
-    }else{
-      this.userButtonText = "Zobrazit";
-    }
+  toggleDisplay(name: string) {
+    var var1 = "";
+    var var2 = false;
+    this.arrayValues.get(name)?.forEach((element) => {
+      console.log(element);
+      if (typeof (element) === 'string') {
+        if(element === "Zobrazit"){
+          var1 = "Skrýt";
+        }
+        else{
+          var1 = "Zobrazit";
+        }
+      }
+      if (typeof (element) === 'boolean') {
+        var2 = !element;
+      }
+    });
+    this.arrayValues.delete(name);
+    this.arrayValues.set(name, [var1, var2]);
+  }
+
+  getText(name: string) {
+    return this.arrayValues.get(name)?.[0];
+  }
+
+  isVisible(name: string) {
+    return this.arrayValues.get(name)?.[1];
   }
 
 }

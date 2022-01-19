@@ -69,13 +69,20 @@ export class NewArticleComponent implements OnInit {
     )
   }
 
-  save(){
+  saveArticle(){
     this.articleService.saveArticle(this.article).subscribe(
       data => {
         this.router.navigate(['/', this.article.category_slug]);
-        console.log(this.article.category_slug);
       }
     );
+  }
+
+  save(){
+    if(this.article.id){
+      this.updateArticle();
+    }else{
+      this.saveArticle();
+    }
   }
 
 }

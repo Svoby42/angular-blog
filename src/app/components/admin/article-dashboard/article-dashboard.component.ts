@@ -23,9 +23,14 @@ export class ArticleDashboardComponent implements OnInit {
   constructor(private articleService: ArticleService, private router: Router) { }
 
   ngOnInit(): void {
+    this.getArticles();
+  }
+
+  getArticles(){
     this.articleService.getAllArticles().subscribe(
       data => {
-        this.dataSource = new MatTableDataSource(data);
+        this.articleList = data;
+        this.dataSource = new MatTableDataSource(this.articleList);
         this.dataSource.paginator = this.paginator;
       }
     )
@@ -40,21 +45,15 @@ export class ArticleDashboardComponent implements OnInit {
     if(confirm("Potvrzení: bude smazán článek " + article.slug)){
       this.articleService.deleteArticle(article).subscribe(
         data => {
-          this.dataSource.data.splice(index, 1);
+          this.articleList.splice(index, 1);
+          this.dataSource = new MatTableDataSource(this.articleList);
+          this.dataSource.paginator = this.paginator;
         }, err => {
           this.errorMessage = "Neočekávaná chyba";
           console.log(err);
         }
       );
-      this.reloadComponent();
     }
-  }
-
-  reloadComponent() {
-    let currentUrl = this.router.url;
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate([currentUrl]);
   }
 
 }

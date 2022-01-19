@@ -1,16 +1,21 @@
 <div class="col-md-12 container">
-    <h2>Uživatelé</h2>
-    <a class="btn btn-success" (click)="toggleUserTableDisplay()">{{ userButtonText }}</a>
-    <app-user-dashboard *ngIf="userTableVisible">
+    <h2 class="mt-2">Uživatelé</h2>
+    <a class="col-2 btn btn-success" (click)="toggleDisplay('userTable')"> {{ getText('userTable') }} </a>
+    <app-user-dashboard *ngIf="isVisible('userTable')">
 
     </app-user-dashboard>
+
     <hr>
-    <h2>Články</h2>
-    <app-article-dashboard>
+
+    <h2 class="mt-2">Články</h2>
+    <a class="col-2 btn btn-success" (click)="toggleDisplay('articleTable')"> {{ getText('articleTable') }}  </a>
+    <app-article-dashboard *ngIf="isVisible('articleTable')">
 
     </app-article-dashboard>
+
     <hr>
-    <h2>Kategorie</h2>
+
+    <h2 class="mt-2">Kategorie</h2>
     <app-category-dashboard>
 
     </app-category-dashboard>

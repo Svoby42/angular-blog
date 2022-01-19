@@ -29,6 +29,9 @@
                 <option *ngFor="let category of categoryList">
                         {{ category.slug }}
                 </option>
+                <div class="alert-danger" *ngIf="f.submitted && !category_slug.valid">
+                    Chyba
+                </div>
             </select>
 
             <select class="form-select" 
@@ -41,8 +44,10 @@
                 <option *ngFor="let category of categoryList">
                         {{ category.slug }}
                 </option>
+                <div class="alert-danger" *ngIf="f.submitted && !category_slug.valid">
+                    Chyba
+                </div>
             </select>
-
         </div>
 
         <div class="form-group">

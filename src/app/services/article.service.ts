@@ -45,7 +45,7 @@ export class ArticleService extends RequestBaseService{
   }
 
   deleteArticle(article: Article): Observable<any>{
-    return this.http.delete(`${API_URL}/${article.id}`, {headers: this.getHeaders});
+    return this.http.delete(`${API_URL}/${article.slug}`, {headers: this.getHeaders});
   }
 
 }

@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserDashboardComponent implements OnInit {
 
+  userList: Array<User> = [];
   selectedUser: User = new User;
   errorMessage: string = "";
   displayedColumns: string[] = ['id', 'username', 'name', 'role', 'create_time', 'last_login', 'actions'];
@@ -24,9 +25,14 @@ export class UserDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getUsers();
+  }
+
+  getUsers(){
     this.userService.getAllUsers().subscribe(
       data => {
-        this.dataSource = new MatTableDataSource(data);
+        this.userList = data;
+        this.dataSource = new MatTableDataSource(this.userList);
         this.dataSource.paginator = this.paginator;
       }
     );
@@ -41,21 +47,15 @@ export class UserDashboardComponent implements OnInit {
     if (confirm("Potvrzeni: bude smazán uživatel " + user.username)) {
       this.userService.deleteUser(user).subscribe(
         data => {
-          this.dataSource.data.splice(index, 1);
+          this.userList.splice(index, 1);
+          this.dataSource = new MatTableDataSource(this.userList);
+          this.dataSource.paginator = this.paginator;
         }, err => {
           this.errorMessage = "Neočekávaná chyba";
           console.log(err);
         }
       );
-      this.reloadComponent();
     }
-  }
-
-  reloadComponent() {
-    let currentUrl = this.router.url;
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate([currentUrl]);
   }
 
 }
