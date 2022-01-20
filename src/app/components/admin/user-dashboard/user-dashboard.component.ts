@@ -13,11 +13,9 @@ import { UserService } from 'src/app/services/user.service';
 export class UserDashboardComponent implements OnInit {
 
   userList: Array<User> = [];
-  selectedUser: User = new User;
   errorMessage: string = "";
   displayedColumns: string[] = ['id', 'username', 'name', 'role', 'create_time', 'last_login', 'actions'];
   dataSource = new MatTableDataSource<User>()
-  visible = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private userService: UserService, private router: Router) {

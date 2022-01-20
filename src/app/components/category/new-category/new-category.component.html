@@ -1,0 +1,62 @@
+<div class="container col-md-8">
+    <h2>Nový článek</h2>
+    <form #f="ngForm" (ngSubmit)="f.valid && save()">
+        <div class="form-group">
+            <label for="title">Titulek</label>
+            <input type="text" 
+            id="title"
+            name="title"
+            class="form-control"
+            [(ngModel)]="category.title"
+            #title="ngModel"
+            required>
+        </div>
+        <div class="alert-danger" *ngIf="f.submitted && !title.valid">
+            Zadejte titulek
+        </div>
+
+        <div class="form-group">
+            <label for="slug">Zadejte slug
+                <span matTooltip='Identifikátor článku v URL, například pokud je titulek "běžel pes přes oves", tak slug bude bezel-pes-pres-oves' [matTooltipPosition]="'right'">
+                    <svg data-toggle="tooltip" title="pokus" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-question-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path
+                        d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+                </svg>
+                </span>
+            </label>
+            <input type="text"
+            id="slug"
+            name="slug"
+            class="form-control"
+            [(ngModel)]="category.slug"
+            #slug="ngModel"
+            pattern="^[a-z0-9]+(?:-[a-z0-9]+)*$" 
+            required />
+            <div class="alert-danger" *ngIf="f.submitted && (!slug.valid || slug.errors?.['pattern'])">
+                Špatný formát
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="content">Popis</label>
+            <angular-editor
+            type=""
+            id="content"
+            name="content"
+            class="form-control"
+            [(ngModel)]="category.description"
+            #content="ngModel"
+            required>
+            </angular-editor>
+
+            <div class="alert-danger" *ngIf="f.submitted && !content.valid">
+                Kategorie musí mít obsah
+            </div>
+        </div>
+        <button class="btn btn-success w-100 mt-3" type="submit">
+            Uložit
+        </button>
+    </form>
+</div>

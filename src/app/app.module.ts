@@ -37,6 +37,7 @@ import { NewArticleComponent } from './components/article/new-article/new-articl
 import { UserDashboardComponent } from './components/admin/user-dashboard/user-dashboard.component';
 import { ArticleDashboardComponent } from './components/admin/article-dashboard/article-dashboard.component';
 import { CategoryDashboardComponent } from './components/admin/category-dashboard/category-dashboard.component';
+import { NewCategoryComponent } from './components/category/new-category/new-category.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { CategoryDashboardComponent } from './components/admin/category-dashboar
     UserDashboardComponent,
     ArticleDashboardComponent,
     CategoryDashboardComponent,
+    NewCategoryComponent,
   ],
   imports: [
     BrowserModule,

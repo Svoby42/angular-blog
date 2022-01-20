@@ -13,11 +13,9 @@ import { ArticleService } from 'src/app/services/article.service';
 export class ArticleDashboardComponent implements OnInit {
 
   articleList: Array<Article> = [];
-  selectedArticle: Article = new Article;
   errorMessage: string = "";
   displayedColumns: string[] = ['id', 'title', 'slug', 'create_time', 'edit_time', 'author_name', 'actions'];
   dataSource = new MatTableDataSource<Article>();
-  visible = false;
 
   @ViewChild(MatPaginator) paginator! : MatPaginator;
   constructor(private articleService: ArticleService, private router: Router) { }

@@ -12,6 +12,7 @@ import { UnauthorizedComponent } from './error/unauthorized/unauthorized.compone
 import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './guest/login/login.component';
 import { RegisterComponent } from './guest/register/register.component'
+import { NewCategoryComponent } from './components/category/new-category/new-category.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'domu', pathMatch: 'full'},
@@ -24,6 +25,8 @@ const routes: Routes = [
   { path: 'admin/user/edit', component: UserComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
   { path: 'admin/article/new', component: NewArticleComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
   { path: 'admin/article/edit', component: NewArticleComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
+  { path: 'admin/category/new', component:  NewCategoryComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
+  { path: 'admin/category/edit', component: NewCategoryComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
   { path: '401', component: UnauthorizedComponent },
   { path: '404', component: NotFoundComponent },
   { path: ':catslug', component: CategoryComponent },
