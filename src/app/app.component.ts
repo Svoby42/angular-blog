@@ -18,11 +18,19 @@ export class AppComponent {
   currentUser: User = new User;
 
   constructor(private authenticationService: AuthenticationService, private categoryService: CategoryService, private router: Router){
+    this.getCurrentUser();
+    this.getCategories();
+  }
+
+  getCurrentUser(){
     this.authenticationService.currentUser.subscribe(
       data =>{
         this.currentUser = data;
       }
     )
+  }
+
+  getCategories(){
     this.categoryService.getAllCategories().subscribe(
       data => {
         this.categories = data;

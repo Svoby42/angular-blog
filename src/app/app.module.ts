@@ -19,6 +19,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -76,7 +77,8 @@ import { CategoryDashboardComponent } from './components/admin/category-dashboar
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    AngularEditorModule
+    AngularEditorModule,
+    NgIdleKeepaliveModule
   ],
   providers: [],
   bootstrap: [AppComponent]
