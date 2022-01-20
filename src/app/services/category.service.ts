@@ -40,6 +40,10 @@ export class CategoryService extends RequestBaseService{
     return this.http.post(API_URL, category, {headers: this.getHeaders});
   }
 
+  updateCategory(category: Category): Observable<any>{
+    return this.http.put(`${API_URL}/${category.slug}`, category, {headers: this.getHeaders});
+  }
+
   deleteCategory(category: Category): Observable<any>{
     return this.http.delete(`${API_URL}/${category.id}`, {headers: this.getHeaders});
   }

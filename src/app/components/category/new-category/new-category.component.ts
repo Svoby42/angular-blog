@@ -20,7 +20,27 @@ export class NewCategoryComponent implements OnInit {
   }
 
   save(){
-    
+    this.categoryService.saveCategory(this.category).subscribe(
+      data => {
+        this.router.navigate(['/admin']);
+      }
+    )
+  }
+
+  updateCategory(){
+    this.categoryService.updateCategory(this.category).subscribe(
+      data => {
+        this.router.navigate(['/admin']);
+      }
+    )
+  }
+
+  saveCategory(){
+    this.categoryService.saveCategory(this.category).subscribe(
+      data => {
+        this.router.navigate(['/admin']);
+      }
+    )
   }
 
 }
