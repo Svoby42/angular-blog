@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 import { MatRippleModule } from '@angular/material/core';
@@ -37,6 +37,7 @@ import { UserDashboardComponent } from './components/admin/user-dashboard/user-d
 import { ArticleDashboardComponent } from './components/admin/article-dashboard/article-dashboard.component';
 import { CategoryDashboardComponent } from './components/admin/category-dashboard/category-dashboard.component';
 import { NewCategoryComponent } from './components/category/new-category/new-category.component';
+import { HttpErrorInterceptorService } from './services/httperror-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,13 @@ import { NewCategoryComponent } from './components/category/new-category/new-cat
     AngularEditorModule,
     NgIdleKeepaliveModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

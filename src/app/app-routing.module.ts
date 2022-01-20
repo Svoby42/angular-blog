@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: '401', component: UnauthorizedComponent },
   { path: '404', component: NotFoundComponent },
   { path: ':catslug', component: CategoryComponent },
-  { path: ':catslug/new', component: NewArticleComponent, pathMatch: 'full' },
+  { path: ':catslug/new', component: NewArticleComponent, canActivate: [AuthGuard], data : { roles: [Role.ADMIN, Role.EDITOR]}, pathMatch: 'full' },
   { path: ':catslug/:articleslug', component: ArticleComponent, pathMatch: 'full' }
 ];
 
