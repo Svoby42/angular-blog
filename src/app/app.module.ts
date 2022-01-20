@@ -31,7 +31,6 @@ import { UnauthorizedComponent } from './error/unauthorized/unauthorized.compone
 import { EditorComponent } from './components/editor/editor.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { UserComponent } from './components/user/user.component';
 import { CategoryComponent } from './components/category/category.component';
 import { NewArticleComponent } from './components/article/new-article/new-article.component';
 import { UserDashboardComponent } from './components/admin/user-dashboard/user-dashboard.component';
@@ -50,7 +49,6 @@ import { NewCategoryComponent } from './components/category/new-category/new-cat
     EditorComponent,
     AdminComponent,
     ProfileComponent,
-    UserComponent,
     CategoryComponent,
     NewArticleComponent,
     UserDashboardComponent,

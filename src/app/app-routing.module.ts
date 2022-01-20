@@ -5,7 +5,6 @@ import { ArticleComponent } from './components/article/article.component';
 import { CategoryComponent } from './components/category/category.component';
 import { NewArticleComponent } from './components/article/new-article/new-article.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { UserComponent } from './components/user/user.component';
 import { Role } from './entities/role.enum';
 import { NotFoundComponent } from './error/not-found/not-found.component';
 import { UnauthorizedComponent } from './error/unauthorized/unauthorized.component';
@@ -22,7 +21,7 @@ const routes: Routes = [
   { path: 'profil', component: ProfileComponent, canActivate: [AuthGuard], data: { roles: [Role.USER, Role.EDITOR, Role.ADMIN]} },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: [Role.ADMIN] }},
   { path: 'admin/user/new', component: RegisterComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
-  { path: 'admin/user/edit', component: UserComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
+  { path: 'admin/user/edit', component: RegisterComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
   { path: 'admin/article/new', component: NewArticleComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
   { path: 'admin/article/edit', component: NewArticleComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
   { path: 'admin/category/new', component:  NewCategoryComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
@@ -32,7 +31,6 @@ const routes: Routes = [
   { path: ':catslug', component: CategoryComponent },
   { path: ':catslug/new', component: NewArticleComponent, pathMatch: 'full' },
   { path: ':catslug/:articleslug', component: ArticleComponent, pathMatch: 'full' }
-
 ];
 
 @NgModule({
