@@ -14,7 +14,7 @@ export class CategoryDashboardComponent implements OnInit {
 
   categoryList: Array<Category> = [];
   errorMessage: string = "";
-  displayedColumns: string[] = ['id', 'title', 'description', 'slug', 'create_time'];
+  displayedColumns: string[] = ['id', 'title', 'description', 'slug', 'create_time', 'actions'];
   dataSource = new MatTableDataSource<Category>();
 
   @ViewChild(MatPaginator) paginator! : MatPaginator;

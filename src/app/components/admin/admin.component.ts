@@ -29,7 +29,6 @@ export class AdminComponent implements OnInit {
     var var1 = "";
     var var2 = false;
     this.arrayValues.get(name)?.forEach((element) => {
-      console.log(element);
       if (typeof (element) === 'string') {
         if(element === "Zobrazit"){
           var1 = "Skrýt";
