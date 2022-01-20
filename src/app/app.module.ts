@@ -38,6 +38,7 @@ import { ArticleDashboardComponent } from './components/admin/article-dashboard/
 import { CategoryDashboardComponent } from './components/admin/category-dashboard/category-dashboard.component';
 import { NewCategoryComponent } from './components/category/new-category/new-category.component';
 import { HttpErrorInterceptorService } from './services/httperror-interceptor.service';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { HttpErrorInterceptorService } from './services/httperror-interceptor.se
     ArticleDashboardComponent,
     CategoryDashboardComponent,
     NewCategoryComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,7 +81,7 @@ import { HttpErrorInterceptorService } from './services/httperror-interceptor.se
     BrowserAnimationsModule,
     FormsModule,
     AngularEditorModule,
-    NgIdleKeepaliveModule
+    NgIdleKeepaliveModule,
   ],
   providers: [
     {

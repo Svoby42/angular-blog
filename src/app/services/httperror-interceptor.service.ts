@@ -23,7 +23,6 @@ export class HttpErrorInterceptorService implements HttpInterceptor{
                 }
                 console.log(error.status);
                 return throwError(() => error);
-                
             })
         );
     }

@@ -12,10 +12,11 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './guest/login/login.component';
 import { RegisterComponent } from './guest/register/register.component'
 import { NewCategoryComponent } from './components/category/new-category/new-category.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'domu', pathMatch: 'full'},
-  { path: 'domu', component: ArticleComponent },
+  { path: 'domu', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registrace', component: RegisterComponent },
   { path: 'profil', component: ProfileComponent, canActivate: [AuthGuard], data: { roles: [Role.USER, Role.EDITOR, Role.ADMIN]} },

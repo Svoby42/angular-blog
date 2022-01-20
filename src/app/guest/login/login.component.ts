@@ -13,7 +13,8 @@ export class LoginComponent implements OnInit {
   user: User = new User;
   errorMessage: string = "";
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) { }
+  constructor(private authenticationService: AuthenticationService, private router: Router) {
+  }
 
   ngOnInit(): void {
     if(this.authenticationService.currentUserValue?.id){
