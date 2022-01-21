@@ -1,5 +1,8 @@
 <div class="container col-md-8">
     <h2>Nový článek</h2>
+    <div *ngIf="errorMessage">
+        {{ errorMessage }}
+    </div>
     <form #f="ngForm" (ngSubmit)="f.valid && save()">
         <div class="form-group">
             <label for="title">Titulek</label>
@@ -18,29 +21,13 @@
         <div class="form-group">
             <label for="category_slug">Vyberte kategorii <small>Podle slugu</small></label>
 
-            <select class="form-select"
-            *ngIf="!article.id"
-            id="category_slug"
-            name="category_slug"
-            [(ngModel)]="article.category_slug"
-            #category_slug="ngModel"
-            required>
-                <option selected> {{ categorySlug }} </option>
-                <option *ngFor="let category of categoryList">
-                        {{ category.slug }}
-                </option>
-                <div class="alert-danger" *ngIf="f.submitted && !category_slug.valid">
-                    Chyba
-                </div>
-            </select>
-
             <select class="form-select" 
-            *ngIf="article.id"
+            *ngIf="article.category_slug"
             id="category_slug"
             name="category_slug"
             [(ngModel)]="article.category_slug"
             #category_slug="ngModel">
-                <option selected *ngIf="article"> {{ article?.category_slug }} </option>
+                <option selected> {{ article?.category_slug }} </option>
                 <option *ngFor="let category of categoryList">
                         {{ category.slug }}
                 </option>

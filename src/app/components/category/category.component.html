@@ -8,7 +8,7 @@
     <hr>
     <div class="row text-black mb-2 w-50 col-md-3" matRipple>
         <a *ngFor="let article of category.article_list" mat-button [routerLink]="['/', category.slug, article.slug]" style="text-align: left;">
-            <mat-card color="primary" *ngFor="let article of category.article_list">
+            <mat-card color="primary">
                 <mat-card-title>{{ article.title }}</mat-card-title>
                 <mat-card-subtitle> {{ article.create_time | date: 'dd/MM/YYYY HH:mm:ss' }} </mat-card-subtitle>
             </mat-card>
