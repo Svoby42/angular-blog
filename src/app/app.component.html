@@ -10,14 +10,13 @@
         </span>
     </a>
     <div class="navbar ms-auto" *ngIf="!currentUser?.id">
+        <a mat-button [routerLink]="['/o-mne']" routerLinkActive="active"> O mně </a>
         <a mat-button [routerLink]="['/registrace']" routerLinkActive="active">Zaregistrovat</a>
         <a mat-button [routerLink]="['/login']" routerLinkActive="active">Login</a>
     </div>
-
     <div class="navbar ms-auto" *ngIf="currentUser?.id">
-        <a mat-button [routerLink]="['/profil']" routerLinkActive="active">Přihlášen jako: {{ currentUser.username }}
-            
-        </a>
+        <a mat-button [routerLink]="['/o-mne']" routerLinkActive="active"> O mně </a>
+        <a mat-button [routerLink]="['/profil']" routerLinkActive="active">Přihlášen jako: {{ currentUser.username }}</a>
         <a mat-button (click)="logout()" routerLinkActive="active">Odhlásit</a>
     </div>
 
