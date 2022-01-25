@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE_URL: 'https://www.svoby.eu'
+  BASE_URL: 'http://localhost:8080'
 };
 
 /*
