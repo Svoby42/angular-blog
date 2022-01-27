@@ -14,8 +14,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { AngularEditorModule } from '@kolkov/angular-editor';
@@ -76,6 +78,9 @@ import { HomeComponent } from './components/home/home.component';
     MatIconModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatDividerModule,
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,

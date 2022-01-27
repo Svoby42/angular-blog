@@ -34,7 +34,7 @@ export class UserService extends RequestBaseService{
   }
 
   getAllArticlesOfLoggedInUser(): Observable<any>{
-    return this.http.get(API_URL+`/${this.authenticationService.currentUserValue.id}`, {headers: this.getHeaders});
+    return this.http.get(API_URL+`/${this.authenticationService.currentUserValue.username}`, {headers: this.getHeaders});
   }
 
   saveUser(user: User): Observable<any>{

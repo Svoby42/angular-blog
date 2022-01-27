@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="app-toolbar">
     <h1>Nazdar</h1>
     <a mat-button [routerLink]="['/admin']" routerLinkActive="active" *ngIf="isAdmin()">Dashboard</a>
     <a mat-button [routerLink]="['/editor']" routerLinkActive="active" *ngIf="isEditor()">Dashboard</a>
@@ -19,7 +19,6 @@
         <a mat-button [routerLink]="['/profil']" routerLinkActive="active">Přihlášen jako: {{ currentUser.username }}</a>
         <a mat-button (click)="logout()" routerLinkActive="active">Odhlásit</a>
     </div>
-
 </mat-toolbar>
 <div class="container-fluid mr-auto mb-2">
     <router-outlet></router-outlet>
