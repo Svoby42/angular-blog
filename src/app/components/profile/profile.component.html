@@ -1,32 +1,28 @@
-<div class="sidenav">
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
-</div>
-
-<div class="main">
-    ...
-</div>
-<!--
-<div class="container">
-    <h1 class="mt-2">Profil</h1>
-    <hr>
-    <div class="navbar">
-        <div>
-            <h2>{{ roleTextFormat() }}</h2>
-            <p>Poslední přihlášení: {{ currentUser.last_login | date: 'dd/MM/YYYY HH:mm:ss' }}</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="m-2 col-md-2 bg-dark p-2 rounded-top rounded-bottom" style="display: block" >
+            <button class="btn btn-success w-100">Změnit heslo</button>
+            <button class="btn btn-success w-100" *ngIf="isAdmin() || isEditor()">Moje články</button>
         </div>
-        <div>
-            <p>Uživatelské jméno: {{ currentUser.username }} </p>
-            <p> {{ currentUser.name }} </p>
+        <div id="content" class="container col-md-9" style="display: block;">
+            <h1 class="mt-2">Profil</h1>
+            <hr>
+            <div class="navbar">
+                <div>
+                    <h2>{{ roleTextFormat() }}</h2>
+                    <p>Poslední přihlášení: {{ currentUser.last_login | date: 'dd/MM/YYYY HH:mm:ss' }}</p>
+                </div>
+                <div>
+                    <p>Uživatelské jméno: {{ currentUser.username }} </p>
+                    <p> {{ currentUser.name }} </p>
+                </div>
+            </div>
+            <hr>
+            <div *ngIf="isAdmin() || isEditor()">
+                <p *ngFor="let article of articleList">
+                    {{ article.title }}
+                </p>
+            </div>
         </div>
     </div>
-    <hr>
-    <div *ngIf="isAdmin() || isEditor()">
-        <p *ngFor="let article of articleList">
-            {{ article.title }}
-        </p>
-    </div>
 </div>
--->
