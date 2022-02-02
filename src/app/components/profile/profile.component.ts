@@ -20,13 +20,14 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCurrentUser();
+    console.log(this.currentUser);
     this.getArticlesOfUser();
   }
 
   roleTextFormat(){
-    if(this.currentUser.role === Role.ADMIN){
+    if(this.currentUser.role === "ROLE_"+Role.ADMIN){
       return "Administrátor";
-    }else if(this.currentUser.role === Role.EDITOR){
+    }else if(this.currentUser.role === "ROLE_"+Role.EDITOR){
       return "Editor";
     }else{
       return "Uživatel";
@@ -50,11 +51,11 @@ export class ProfileComponent implements OnInit {
   }
 
   isAdmin(){
-    return this.currentUser?.role === Role.ADMIN;
+    return this.currentUser?.role === "ROLE_"+Role.ADMIN;
   }
 
   isEditor(){
-    return this.currentUser?.role === Role.EDITOR;
+    return this.currentUser?.role === "ROLE_"+Role.EDITOR;
   }
 
 }

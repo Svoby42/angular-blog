@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registrace', component: RegisterComponent },
   { path: 'o-mne', component: AboutComponent },
-  { path: 'profil', component: ProfileComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_"+Role.USER, "ROLE_"+Role.EDITOR, Role.ADMIN]} },
+  { path: 'profil', component: ProfileComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_"+Role.USER, "ROLE_"+Role.EDITOR, "ROLE_"+Role.ADMIN]} },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: ["ROLE_"+Role.ADMIN] }},
   { path: 'admin/user/new', component: RegisterComponent, canActivate: [AuthGuard], data: {roles: ["ROLE_"+Role.ADMIN]} },
   { path: 'admin/user/edit', component: RegisterComponent, canActivate: [AuthGuard], data: {roles: ["ROLE_"+Role.ADMIN]} },

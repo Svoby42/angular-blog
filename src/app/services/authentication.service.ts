@@ -20,7 +20,6 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private cookieService: CookieService) {
     let storageUser;
     const storageUserAsStr = cookieService.get('currentUser');
-    console.log(storageUserAsStr);
     if(storageUserAsStr){
       storageUser = JSON.parse(storageUserAsStr);
     }
@@ -42,10 +41,10 @@ export class AuthenticationService {
           this.userFromCookie.id = tokenDecoded.userId;
           this.userFromCookie.username = tokenDecoded.sub;
           this.userFromCookie.role = tokenDecoded.roles;
-          this.userFromCookie.token = tokenDecoded;
+          this.userFromCookie.token = response.token;
           this.cookieService.set("currentUser", JSON.stringify(this.userFromCookie));
           this.currentUserSubject.next(this.userFromCookie);
-          console.log(response);
+          console.log(response.token);
         }
         return response;
       })
