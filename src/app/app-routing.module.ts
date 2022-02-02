@@ -16,11 +16,11 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
-  { path: '', component: AboutComponent, pathMatch: 'full'},
+  { path: '', redirectTo: 'o-mne', pathMatch: 'full'},
   { path: 'domu', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registrace', component: RegisterComponent },
-  { path: 'o-mne', component: ArticleComponent },
+  { path: 'o-mne', component: AboutComponent },
   { path: 'profil', component: ProfileComponent, canActivate: [AuthGuard], data: { roles: [Role.USER, Role.EDITOR, Role.ADMIN]} },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: [Role.ADMIN] }},
   { path: 'admin/user/new', component: RegisterComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },

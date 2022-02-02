@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="app-toolbar">
+<mat-toolbar color="primary" class="app-toolbar mb-2">
     <h1>Nazdar</h1>
     <a mat-button [routerLink]="['/admin']" routerLinkActive="active" *ngIf="isAdmin()">Dashboard</a>
     <a mat-button [routerLink]="['/editor']" routerLinkActive="active" *ngIf="isEditor()">Dashboard</a>
@@ -24,8 +24,8 @@
     <router-outlet></router-outlet>
 </div>
 <footer class="fixed-bottom mt-2 text-white">
-    <div class="text-center p-1" style="background-color: #7b1fa2;">
-        © {{ getYear() }} Ondřej Svoboda
+    <div class="text-center" style="background-color: #7b1fa2;">
+        © {{ getYear() }} &nbsp; Ondřej Svoboda &nbsp;
         <a href="https://github.com/Svoby42/">
             <img width="25px" height="25px" src="https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/github/github-original.svg">
         </a>
