@@ -41,6 +41,7 @@ import { CategoryDashboardComponent } from './components/admin/category-dashboar
 import { NewCategoryComponent } from './components/category/new-category/new-category.component';
 import { HttpErrorInterceptorService } from './services/httperror-interceptor.service';
 import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { HomeComponent } from './components/home/home.component';
     CategoryDashboardComponent,
     NewCategoryComponent,
     HomeComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

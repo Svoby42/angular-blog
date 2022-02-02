@@ -3,8 +3,7 @@
     <a mat-button [routerLink]="['/admin']" routerLinkActive="active" *ngIf="isAdmin()">Dashboard</a>
     <a mat-button [routerLink]="['/editor']" routerLinkActive="active" *ngIf="isEditor()">Dashboard</a>
     <a mat-button [routerLink]="['/domu']" routerLinkActive="active">Domů</a>
-    <a mat-button [routerLink]="['/', category.slug]" routerLinkActive="active" 
-    *ngFor="let category of categories">
+    <a mat-button [routerLink]="['/', category.slug]" routerLinkActive="active" *ngFor="let category of categories">
         <span [matTooltip]="'' + category.description" [matTooltipPosition]="'below'">
             {{ category.title }}
         </span>
@@ -16,10 +15,17 @@
     </div>
     <div class="navbar ms-auto" *ngIf="currentUser?.id">
         <a mat-button [routerLink]="['/o-mne']" routerLinkActive="active"> O mně </a>
-        <a mat-button [routerLink]="['/profil']" routerLinkActive="active">Přihlášen jako: {{ currentUser.username }}</a>
+        <a mat-button [routerLink]="['/profil']" routerLinkActive="active">Přihlášen jako: {{ currentUser.username
+            }}</a>
         <a mat-button (click)="logout()" routerLinkActive="active">Odhlásit</a>
     </div>
 </mat-toolbar>
-<div>
+<div class="mb-5">
     <router-outlet></router-outlet>
 </div>
+<footer class="fixed-bottom mt-2 text-white" color="primary">
+    <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+</footer>

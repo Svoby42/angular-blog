@@ -13,9 +13,10 @@ import { LoginComponent } from './guest/login/login.component';
 import { RegisterComponent } from './guest/register/register.component'
 import { NewCategoryComponent } from './components/category/new-category/new-category.component';
 import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'domu', pathMatch: 'full'},
+  { path: '', component: AboutComponent, pathMatch: 'full'},
   { path: 'domu', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registrace', component: RegisterComponent },
