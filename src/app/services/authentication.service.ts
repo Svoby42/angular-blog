@@ -32,10 +32,8 @@ export class AuthenticationService {
   }
 
   login(user: User): Observable<any>{
-    console.log(user);
     return this.http.post<any>(API_URL + 'sign-in', user).pipe(
       map(response => {
-        console.log(response);
         if(response){
           var tokenDecoded = this.decodeAccessToken(response.token);
           this.userFromCookie.id = tokenDecoded.userId;
@@ -44,7 +42,6 @@ export class AuthenticationService {
           this.userFromCookie.token = response.token;
           this.cookieService.set("currentUser", JSON.stringify(this.userFromCookie));
           this.currentUserSubject.next(this.userFromCookie);
-          console.log(response.token);
         }
         return response;
       })
@@ -56,13 +53,11 @@ export class AuthenticationService {
       map(response => {
         if(response){
           var tokenDecoded = this.decodeAccessToken(response.token);
-          console.log(tokenDecoded);
           this.userFromCookie.id = tokenDecoded.userId;
           this.userFromCookie.username = tokenDecoded.sub;
           this.userFromCookie.role = tokenDecoded.roles;
           this.userFromCookie.token = response
           this.currentUserSubject.next(this.userFromCookie);
-          console.log(this.userFromCookie.token);
         }
         return response;
       })

@@ -13,7 +13,6 @@ export abstract class RequestBaseService {
   protected constructor(protected authenticationService: AuthenticationService, protected http: HttpClient) {
     this.authenticationService.currentUser.subscribe(data => {
       this.currentUser = data;
-      console.log(this.currentUser);
     })
   }
 
