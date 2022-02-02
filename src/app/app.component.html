@@ -1,25 +1,36 @@
-<mat-toolbar color="primary" class="app-toolbar mb-2">
-    <h1 style="margin-right: 1vh;">svoby.eu</h1>
-    <a mat-button [routerLink]="['/admin']" routerLinkActive="active" *ngIf="isAdmin()">Dashboard</a>
-    <a mat-button [routerLink]="['/editor']" routerLinkActive="active" *ngIf="isEditor()">Dashboard</a>
-    <a mat-button [routerLink]="['/domu']" routerLinkActive="active">Domů</a>
-    <a mat-button [routerLink]="['/', category.slug]" routerLinkActive="active" *ngFor="let category of categories">
-        <span [matTooltip]="'' + category.description" [matTooltipPosition]="'below'">
-            {{ category.title }}
-        </span>
-    </a>
-    <div class="navbar ms-auto" *ngIf="!currentUser?.id">
-        <a mat-button [routerLink]="['/o-mne']" routerLinkActive="active"> O mně </a>
-        <a mat-button [routerLink]="['/registrace']" routerLinkActive="active">Zaregistrovat</a>
-        <a mat-button [routerLink]="['/login']" routerLinkActive="active">Login</a>
+<nav class="navbar navbar-expand-lg navbar-light text-white app-toolbar font-weight-bold">
+    <div class="container-fluid">
+        <h3 style="margin-right: 1vh;">svoby.eu</h3>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li> <a mat-button [routerLink]="['/admin']" routerLinkActive="active" *ngIf="isAdmin()">Dashboard</a></li>
+                <li> <a mat-button [routerLink]="['/admin']" routerLinkActive="active" *ngIf="isAdmin()">Dashboard</a></li>
+                <li> <a mat-button [routerLink]="['/editor']" routerLinkActive="active" *ngIf="isEditor()">Dashboard</a></li>
+                <li> <a mat-button [routerLink]="['/domu']" routerLinkActive="active">Domů</a></li>
+                <li> <a mat-button [routerLink]="['/', category.slug]" routerLinkActive="active" *ngFor="let category of categories">
+                        <span [matTooltip]="'' + category.description" [matTooltipPosition]="'below'">
+                            {{ category.title }}
+                        </span>
+                    </a></li>
+            </ul>
+            <ul class="navbar-nav ms-auto" *ngIf="!currentUser?.id">
+                <li> <a mat-button [routerLink]="['/o-mne']" routerLinkActive="active"> O mně </a></li>
+                <li> <a mat-button [routerLink]="['/registrace']" routerLinkActive="active">Zaregistrovat</a></li>
+                <li> <a mat-button [routerLink]="['/login']" routerLinkActive="active">Login</a></li>
+            </ul>
+            <ul class="navbar-nav ms-auto" *ngIf="currentUser?.id">
+                <li> <a mat-button [routerLink]="['/o-mne']" routerLinkActive="active"> O mně </a></li>
+                <li> <a mat-button [routerLink]="['/profil']" routerLinkActive="active">Přihlášen jako:
+                        {{currentUser.username}}</a></li>
+                <li> <a mat-button (click)="logout()" routerLinkActive="active">Odhlásit</a></li>
+            </ul>
+        </div>
     </div>
-    <div class="navbar ms-auto" *ngIf="currentUser?.id">
-        <a mat-button [routerLink]="['/o-mne']" routerLinkActive="active"> O mně </a>
-        <a mat-button [routerLink]="['/profil']" routerLinkActive="active">Přihlášen jako: {{ currentUser.username
-            }}</a>
-        <a mat-button (click)="logout()" routerLinkActive="active">Odhlásit</a>
-    </div>
-</mat-toolbar>
+</nav>
 <div class="mb-5">
     <router-outlet></router-outlet>
 </div>
@@ -27,7 +38,8 @@
     <div class="text-center" style="background-color: #7b1fa2;">
         © {{ getYear() }} &nbsp; Ondřej Svoboda &nbsp;
         <a href="https://github.com/Svoby42/">
-            <img width="25px" height="25px" src="https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/github/github-original.svg">
+            <img width="25px" height="25px"
+                src="https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/github/github-original.svg">
         </a>
     </div>
 </footer>
