@@ -1,23 +1,36 @@
-<div class="container">
-    <div class="row">
-        <div class="card-wrapper" matRipple>
-            <mat-card>
-              <mat-card-header>
-                <mat-card-title>Ondřej Svoboda</mat-card-title>
-                <mat-card-subtitle>
-                  Learn Web Development with Easy Tutorials
-                </mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content>
-                <p style="margin-left: 3vh;">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat.
-                </p>
-                <img mat-card-image style="width: 5vh; height: 5vh; margin-left: 1vh;" src="../../assets/angular.svg" alt="Angular Logo">
-                <img mat-card-image style="width: 5vh; height: 5vh; margin-left: 5vh; margin-bottom: 2vh;" src="../../assets/spring-original.svg" alt="Spring Logo">
-              </mat-card-content>
-            </mat-card>
+<div class="container mt-3">
+  <div class="row col-md-12  main-content" >
+    <div matRipple>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Ondřej Svoboda</mat-card-title>
+          <mat-card-subtitle>
+            Jsem absolventem <a class="text-white" href="https://www.spsmb.cz/">SPŠMB</a>
+            <br>
+            Zanechal jsem studia na TUL (nemělo to smysl)
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content style="margin-left: 2.5vh;">
+          <p>Ze školy mám docela dobrou zkušenost s Javou SE a FX.<br>Používám Linux (Arch), jsem fanda open-source technologií<br>Chci být Fullstack vývojář</p>
+          <p>Tento web běží na <br>AWS EC2 + nginx<br>BE Spring Boot (db PostgreSQL)<br>FE Angular (Angular Material & Bootstrap 5.1)</p><br>
+          <div>
+            <a href="https://github.com/Svoby42/angular-blog" target="blank">
+              <img mat-card-image style="width: 5vh; height: 5vh; margin-left: 1vh;" src="../../assets/angular.svg" alt="Angular Logo">
+            </a>
+            <a href="https://github.com/Svoby42/spring-blog" target="blank">
+              <img mat-card-image style="width: 5vh; height: 5vh; margin-left: 5vh; margin-bottom: 2vh;"
+                src="../../assets/spring-original.svg" alt="Spring Logo">
+            </a>
+            <p>
+              Zdrojáky ↑↑↑
+            </p>
           </div>
+        </mat-card-content>
+      </mat-card>
+      <a class="align-right">Další informace</a>
+      <app-further-info>
+        
+      </app-further-info>
     </div>
+  </div>
 </div>

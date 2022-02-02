@@ -42,6 +42,8 @@ import { NewCategoryComponent } from './components/category/new-category/new-cat
 import { HttpErrorInterceptorService } from './services/httperror-interceptor.service';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './about/about.component';
+import { FurtherInfoComponent } from './about/further-info/further-info.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import { AboutComponent } from './about/about.component';
     NewCategoryComponent,
     HomeComponent,
     AboutComponent,
+    FurtherInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,6 +94,7 @@ import { AboutComponent } from './about/about.component';
     NgIdleKeepaliveModule,
   ],
   providers: [
+    CookieService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptorService,
