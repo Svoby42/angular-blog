@@ -51,4 +51,8 @@ export class AppComponent {
     this.router.navigate(['/login']);
   }
 
+  getYear(){
+    return new Date().getFullYear();
+  }
+
 }
