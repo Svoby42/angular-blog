@@ -39,11 +39,11 @@ export class AppComponent {
   }
 
   isAdmin(){
-    return this.currentUser?.role === Role.ADMIN;
+    return this.currentUser?.role === "ROLE_"+Role.ADMIN;
   }
 
   isEditor(){
-    return this.currentUser?.role === Role.EDITOR;
+    return this.currentUser?.role === "ROLE_"+Role.EDITOR;
   }
 
   logout(){

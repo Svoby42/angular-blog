@@ -22,12 +22,17 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login(){
+  login2(){
     this.authenticationService.login(this.user).subscribe(data => {
       this.router.navigate(['/profil']);
     }, err => {
       this.errorMessage = "Uživatelské jméno nebo heslo je nesprávné";
       console.log(err);
+    });
+  }
+  login(){
+    this.authenticationService.login(this.user).subscribe(data => {
+      this.router.navigate(['/profil']);
     });
   }
 
