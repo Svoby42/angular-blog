@@ -44,20 +44,7 @@ export class AuthenticationService {
           this.userFromCookie.username = tokenDecoded.sub;
           this.userFromCookie.role = tokenDecoded.roles;
           this.userFromCookie.token = response
-          this.currentUserSubject.next(this.userFromCookie);
           console.log(this.userFromCookie.token);
-        }
-        return response;
-      })
-    );
-  }
-
-  login2(user: User): Observable<any>{
-    return this.http.post<any>(API_URL + 'sign-in', user).pipe(
-      map(response => {
-        if(response){
-          localStorage.setItem('currentUser', JSON.stringify(response));
-          this.currentUserSubject.next(response);
         }
         return response;
       })
