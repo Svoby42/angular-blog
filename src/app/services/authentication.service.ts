@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../entities/user.model';
-import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
-import { Keepalive } from '@ng-idle/keepalive';
+import { CookieService } from 'ngx-cookie-service';
+import jwt_decode from "jwt-decode";
 
 const API_URL = `${environment.BASE_URL}/api/authentication/`;
 
@@ -13,12 +13,13 @@ const API_URL = `${environment.BASE_URL}/api/authentication/`;
 })
 export class AuthenticationService {
 
+  userFromCookie: User = new User;
   public currentUser: Observable<User>;
   private currentUserSubject: BehaviorSubject<User>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private cookieService: CookieService) {
     let storageUser;
-    const storageUserAsStr = localStorage.getItem('currentUser');
+    const storageUserAsStr = cookieService.get('currentUser');
     if(storageUserAsStr){
       storageUser = JSON.parse(storageUserAsStr);
     }
@@ -33,6 +34,25 @@ export class AuthenticationService {
   }
 
   login(user: User): Observable<any>{
+    return this.http.post<any>(API_URL + 'sign-in', user).pipe(
+      map(response => {
+        if(response){
+
+          var tokenDecoded = this.decodeAccessToken(response.token);
+          console.log(tokenDecoded);
+          this.userFromCookie.id = tokenDecoded.userId;
+          this.userFromCookie.username = tokenDecoded.sub;
+          this.userFromCookie.role = tokenDecoded.roles;
+          this.userFromCookie.token = response
+          this.currentUserSubject.next(this.userFromCookie);
+          console.log(this.userFromCookie.token);
+        }
+        return response;
+      })
+    );
+  }
+
+  login2(user: User): Observable<any>{
     return this.http.post<any>(API_URL + 'sign-in', user).pipe(
       map(response => {
         if(response){
@@ -51,6 +71,14 @@ export class AuthenticationService {
   logout(){
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(new User);
+  }
+
+  decodeAccessToken(token: string): any {
+    try{
+      return jwt_decode(token);
+    } catch(error){
+      return error;
+    }
   }
 
 }
