@@ -4,3 +4,14 @@
 .main-content{
     justify-content: center;
 }
+.left-content{
+  float: left;
+}
+.right-content{
+  float: left;
+}
+.custom-button{
+  color: white;
+  background-color: transparent;
+  border: 0px;
+}
