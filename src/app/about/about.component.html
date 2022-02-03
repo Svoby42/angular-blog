@@ -1,7 +1,7 @@
 <div class="container mt-3">
   <div class="row col-md-12  main-content" >
-    <div matRipple>
-      <mat-card>
+    <div>
+      <mat-card matRipple>
         <mat-card-header>
           <mat-card-title>Ondřej Svoboda</mat-card-title>
           <mat-card-subtitle>
@@ -27,9 +27,9 @@
           </div>
         </mat-card-content>
       </mat-card>
-      <a class="align-right">Další informace</a>
-      <app-further-info>
-        
+      <a (click)="changeDisplay()" class="align-right">Další informace <small>(neformální)</small></a>
+      <app-further-info *ngIf="isVisible">
+
       </app-further-info>
     </div>
   </div>
