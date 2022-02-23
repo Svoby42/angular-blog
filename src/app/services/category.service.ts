@@ -45,9 +45,9 @@ export class CategoryService extends RequestBaseService{
   }
 
   deleteCategory(category: Category): Observable<any>{
-    return this.http.delete(`${API_URL}/${category.id}`, {headers: this.getHeaders});
+    return this.http.delete(`${API_URL}/${category.slug}`, {headers: this.getHeaders});
   }
 
-  
+
 
 }

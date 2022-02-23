@@ -22,7 +22,7 @@ export class CategoryComponent implements OnInit {
   admin: Role = Role.ADMIN;
   editor: Role = Role.EDITOR;
 
-  constructor(private router: Router, private route: ActivatedRoute, 
+  constructor(private router: Router, private route: ActivatedRoute,
     private categoryService: CategoryService, private authenticationService: AuthenticationService) {
       this.router.events.subscribe( (val) => {
         if(val instanceof NavigationEnd){
@@ -60,7 +60,9 @@ export class CategoryComponent implements OnInit {
   }
 
   canCreate(): boolean{
-    return this.currentUser?.role === Role.ADMIN || this.currentUser?.role === Role.EDITOR;
+    console.log(this.currentUser?.role === "ROLE_"+Role.ADMIN);
+    console.log(Role.ADMIN);
+    return this.currentUser?.role === "ROLE_"+Role.ADMIN || this.currentUser?.role === "ROLE_"+Role.EDITOR;
   }
 
 }
